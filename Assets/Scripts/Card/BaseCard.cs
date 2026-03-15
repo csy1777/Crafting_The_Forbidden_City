@@ -25,7 +25,8 @@ public class BaseCard : MonoBehaviour
    public Transform endPos;
    public float speed = 1f;
    public bool canMove = true;
-
+   public Cell currentCell;
+   private bool canMade = false;
    void Update()
    {
       if (endPos == null) return;
@@ -36,12 +37,29 @@ public class BaseCard : MonoBehaviour
          if (Vector3.Distance(transform.position, endPos.position) < 0.1f)
             Destroy(gameObject);
       }
+
+      if (Input.GetMouseButtonDown(0) && currentCell != null)
+      {
+         if (currentCell.AddBaseCard(this))
+         {
+            canMade = true;
+            HandManager.Instance.ClearCard();
+         }
+      }
    }
 
    private void OnMouseDown()
    {
       HandManager.Instance.SetCurrentBaseCard(this);
       canMove = false;
+   }
+
+   private void OnTriggerEnter2D(Collider2D other)
+   {
+      if (other.gameObject.tag == "Cell")
+      {
+         currentCell = other.GetComponent<Cell>();
+      }
    }
    
 }

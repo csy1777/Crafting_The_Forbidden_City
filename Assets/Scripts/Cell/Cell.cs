@@ -13,7 +13,6 @@ public class Cell : MonoBehaviour
       if(currentBaseCard!=null)return false;
       currentBaseCard = baseCard;
       currentBaseCard.transform.position = transform.position;
-      Debug.Log("success");
       return true;
    }
    
