@@ -1511,6 +1511,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1310499142}
+  - component: {fileID: 1310499143}
   m_Layer: 0
   m_Name: AdvancedCardManager
   m_TagString: Untagged
@@ -1533,6 +1534,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1310499143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310499141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a0c148d790f1d419a6e90a9872fcf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  woodenComponent: {fileID: 7738974945477359799, guid: da37a43901209f8498ce1a287afeba6d, type: 3}
+  stoneComponent: {fileID: 8041465474769159917, guid: 107bbc6a1af93cf42b81bbc20d089deb, type: 3}
+  tileComponent: {fileID: 5347269884060160715, guid: 03476fe1711d12c4fa0c728f770b0db5, type: 3}
+  decorativeComponent: {fileID: 27867937437167926, guid: 59e7268f2d845524daf85a7d5f396fcb, type: 3}
 --- !u!1 &1353437923 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5625689295627345272, guid: 49b14469908aa7e4d9a25dd83ed657e2, type: 3}
@@ -2457,8 +2474,8 @@ SceneRoots:
   - {fileID: 120342481}
   - {fileID: 922733449}
   - {fileID: 1378661635}
+  - {fileID: 1310499142}
   - {fileID: 1909552620}
   - {fileID: 2121777655}
   - {fileID: 1852508886}
   - {fileID: 2082047222}
-  - {fileID: 1310499142}

@@ -26,7 +26,7 @@ public class BaseCard : MonoBehaviour
    public float speed = 1f;
    public bool canMove = true;
    public Cell currentCell;
-   private bool canMade = false;
+   public BaseCard anotherCard;
    void Update()
    {
       if (endPos == null) return;
@@ -42,7 +42,6 @@ public class BaseCard : MonoBehaviour
       {
          if (currentCell.AddBaseCard(this))
          {
-            canMade = true;
             HandManager.Instance.ClearCard();
          }
       }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cell
   - Card
+  - AdvancedCard
   layers:
   - Default
   - TransparentFX
