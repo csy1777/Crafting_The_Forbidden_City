@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AdvancedCardManager : MonoBehaviour
+public class AdvancedCardManager : SingleTon <AdvancedCardManager>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject woodenComponent;
+    public GameObject stoneComponent;
+    public GameObject tileComponent;
+    public GameObject decorativeComponent;
 }
