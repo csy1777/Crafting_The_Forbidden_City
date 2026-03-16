@@ -53,3 +53,9 @@ TagManager:
   - name: Card
     uniqueID: 2692875783
     locked: 0
+  - name: PuzzleArea
+    uniqueID: 4265434291
+    locked: 0
+  - name: Puzzle
+    uniqueID: 1601919149
+    locked: 0
