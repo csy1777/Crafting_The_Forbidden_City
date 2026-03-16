@@ -2076,6 +2076,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentBaseCard: {fileID: 0}
+  checkRadius: 0.25
+  checkLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &1909552620
 Transform:
   m_ObjectHideFlags: 0
