@@ -8,8 +8,9 @@ public enum AdvancedCardType
     stoneComponent,
     tileComponent,
     decorativeComponent,
+    none
 }
-public class AdvancedCard : MonoBehaviour
+public class AdvancedCard : Card
 {
-    public AdvancedCardType cardType;
+    public AdvancedCardType advancedCardType;
 }
