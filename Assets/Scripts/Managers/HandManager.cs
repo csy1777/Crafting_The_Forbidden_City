@@ -24,7 +24,7 @@ public class HandManager : SingleTon<HandManager>
                 ClearHand();
             }
         }
-
+        
         if (FindCell()&&Input.GetMouseButtonDown(0))
         {
             if (checkCollider != null)
@@ -38,10 +38,12 @@ public class HandManager : SingleTon<HandManager>
                         {
                             currentBaseCard.canClick=false;
                             ClearHand();
+                            checkCollider = null;
                         }
                         else
                         {
-                            Debug.Log("格子满了");
+                            Debug.Log(currentBaseCard);
+                            Debug.Log(cell.currentBaseCard);
                         }
                     }
                 }
