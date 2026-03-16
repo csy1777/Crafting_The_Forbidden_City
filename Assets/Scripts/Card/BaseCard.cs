@@ -26,8 +26,6 @@ public class BaseCard : MonoBehaviour
    public float speed = 1f;
    public bool canMove = true;
    public bool canClick = true;
-   public Cell currentCell;
-   public BaseCard anotherCard;
    void Update()
    {
       if (endPos == null) return;
