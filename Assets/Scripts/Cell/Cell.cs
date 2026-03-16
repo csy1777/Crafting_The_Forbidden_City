@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-   BaseCard currentBaseCard;
+   public BaseCard currentBaseCard;
    
 
    public bool AddBaseCard(BaseCard baseCard)
