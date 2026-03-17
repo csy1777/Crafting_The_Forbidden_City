@@ -50,6 +50,9 @@ TagManager:
   - name: Cell
     uniqueID: 2494640297
     locked: 0
+  - name: Building
+    uniqueID: 555375181
+    locked: 0
   - name: Card
     uniqueID: 2692875783
     locked: 0
