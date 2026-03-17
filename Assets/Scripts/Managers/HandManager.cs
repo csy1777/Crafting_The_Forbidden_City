@@ -21,6 +21,7 @@ public class HandManager : SingleTon<HandManager>
     
     private void Update()
     {
+        
         FollowCursor();
         
         //如果手上有卡片,点击鼠标右键就能删除
@@ -171,19 +172,24 @@ public class HandManager : SingleTon<HandManager>
     {
         if (cardType == AdvancedCardType.woodenComponent)
         {
-            Instantiate(woodenComponent);
+            AdvancedCard obj=Instantiate(woodenComponent);
+            currentCard = obj;
         }
         else if (cardType == AdvancedCardType.stoneComponent)
         {
-            Instantiate(stoneComponent);
+            AdvancedCard obj=Instantiate(stoneComponent);
+            currentCard = obj;
+            
         }
         else if (cardType == AdvancedCardType.tileComponent)
         {
-            Instantiate(tileComponent);
+            AdvancedCard obj=Instantiate(tileComponent);
+            currentCard = obj;
         }
         else if (cardType == AdvancedCardType.decorativeComponent)
         {
-            Instantiate(decorativeComponent);
+            AdvancedCard obj=Instantiate(decorativeComponent);
+            currentCard = obj;
         }
         else if (cardType == AdvancedCardType.none)
         {
