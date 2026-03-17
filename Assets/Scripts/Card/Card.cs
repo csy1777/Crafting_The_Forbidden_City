@@ -11,4 +11,8 @@ public class Card : MonoBehaviour
 {
     public CardType cardType;
     public bool canClick;
+    private void Start()
+    {
+        canClick = true;
+    }
 }
