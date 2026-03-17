@@ -15,7 +15,6 @@ public class HandManager : SingleTon<HandManager>
     private Vector3 handPos;
     private Collider2D checkCollider;
     private AdvancedCardType advancedCardType=AdvancedCardType.none;
-    
     private BaseCard handCard;
     private BaseCard cellCard;
     
@@ -24,8 +23,8 @@ public class HandManager : SingleTon<HandManager>
         
         FollowCursor();
         
-        //如果手上有卡片,点击鼠标右键就能删除
-        if (Input.GetMouseButtonDown(1))
+        //如果手上有卡片,点击空格就能删除
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (currentCard != null)
             {
@@ -33,8 +32,7 @@ public class HandManager : SingleTon<HandManager>
                 ClearHand();
             }
         }
-        
-        if (FindCell()&&Input.GetMouseButtonDown(0))
+        if (FindCell()&&Input.GetMouseButtonDown(1))
         {
             if (checkCollider != null)
             {
@@ -45,7 +43,8 @@ public class HandManager : SingleTon<HandManager>
                         bool success=cell.AddCard(currentCard);
                         if (success)
                         {
-                            currentCard.canClick = false;
+                            //currentCard.canClick = false;
+                            currentCard.currentCell=cell;
                             ClearHand();
                             checkCollider = null;
                             Debug.Log("已成功放入");
@@ -140,31 +139,31 @@ public class HandManager : SingleTon<HandManager>
         if (materialCard.materialCardType == MaterialCardType.wood &&
             toolCard.toolCardType == ToolCardType.saw)
         {
-            return AdvancedCardType.woodenComponent;
             Debug.Log("合成了木构件");
+            return AdvancedCardType.woodenComponent;
         }
         else if (materialCard.materialCardType == MaterialCardType.stone &&
             toolCard.toolCardType == ToolCardType.chiselAndhammer)
         {
-            return AdvancedCardType.stoneComponent;
             Debug.Log("合成了石构件");
+            return AdvancedCardType.stoneComponent;
         }
         else if (materialCard.materialCardType == MaterialCardType.clay &&
             toolCard.toolCardType == ToolCardType.kilnFire)
         {
-            return AdvancedCardType.tileComponent;
             Debug.Log("合成了瓦构件");
+            return AdvancedCardType.tileComponent;
         }
         else if (materialCard.materialCardType == MaterialCardType.paint &&
             toolCard.toolCardType == ToolCardType.goldPowder)
         {
-            return AdvancedCardType.decorativeComponent;
             Debug.Log("合成了装饰构件");
+            return AdvancedCardType.decorativeComponent;
         }
         else
         {
-            return AdvancedCardType.none;
             Debug.Log("材料类型和工具类型没匹配");
+            return AdvancedCardType.none;
         }
     }
 
