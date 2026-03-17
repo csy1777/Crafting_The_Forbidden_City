@@ -7,6 +7,10 @@ TagManager:
   - Cell
   - Card
   - AdvancedCard
+  - LeftArea
+  - Slot1
+  - Slot2
+  - Slot3
   layers:
   - Default
   - TransparentFX
