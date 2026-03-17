@@ -10,9 +10,9 @@ public enum CardType
 public class Card : MonoBehaviour
 {
     public CardType cardType;
-    public bool canClick;
+    public Cell currentCell;
     private void Start()
     {
-        canClick = true;
+        
     }
 }
