@@ -42,8 +42,8 @@ public class HandManager : SingleTon<HandManager>
                         bool success=cell.AddCard(currentCard);
                         if (success)
                         {
-                            //currentCard.canClick = false;
                             currentCard.currentCell=cell;
+                            currentCard.GetComponent<SpriteRenderer>().sortingOrder=0;
                             ClearHand();
                             checkCollider = null;
                             Debug.Log("已成功放入");

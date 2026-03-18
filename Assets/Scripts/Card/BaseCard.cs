@@ -45,6 +45,7 @@ public class BaseCard : Card
       if (!GameManager.isGameOver)
       {
          HandManager.Instance.SetCurrentCard(this);
+         GetComponent<SpriteRenderer>().sortingOrder = 10;
          canMove = false;
          Debug.Log(gameObject.name);
          if (currentCell)
