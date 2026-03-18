@@ -11,6 +11,9 @@ TagManager:
   - Slot1
   - LeftArea
   - Slot3
+  - Roof
+  - MainBody
+  - PlatformBase
   layers:
   - Default
   - TransparentFX

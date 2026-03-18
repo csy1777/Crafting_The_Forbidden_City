@@ -19,6 +19,7 @@ public class BuildingManager : SingleTon<BuildingManager>
 
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
         SceneIndex=SceneManager.GetActiveScene().buildIndex;
         switch (SceneIndex)
         {
