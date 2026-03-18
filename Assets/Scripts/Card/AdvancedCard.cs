@@ -17,12 +17,15 @@ public class AdvancedCard : Card
 
     private void OnMouseDown()
     {
-        HandManager.Instance.SetCurrentCard(this);
-        Debug.Log(gameObject.name);
-        if (currentCell)
+        if (!GameManager.isGameOver)
         {
-            currentCell.currentCard = null;
-            currentCell = null;
+            HandManager.Instance.SetCurrentCard(this);
+            Debug.Log(gameObject.name);
+            if (currentCell)
+            {
+                currentCell.currentCard = null;
+                currentCell = null;
+            }
         }
     }
 }

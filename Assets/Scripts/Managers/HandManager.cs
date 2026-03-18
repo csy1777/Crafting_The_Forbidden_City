@@ -7,7 +7,8 @@ public class HandManager : SingleTon<HandManager>
 {
     public Card currentCard;
     public float checkRadius=1;
-    public LayerMask checkLayer;
+    public LayerMask cellLayer;
+    public LayerMask BuildingLayer;
     public AdvancedCard woodenComponent;
     public AdvancedCard stoneComponent;
     public AdvancedCard tileComponent;
@@ -97,6 +98,46 @@ public class HandManager : SingleTon<HandManager>
                 }
             }
         }
+
+        if (FindBuilding() && Input.GetMouseButtonDown(1))
+        {
+            if (checkCollider != null)
+            {
+                AdvancedCard advancedCard = currentCard.GetComponent<AdvancedCard>();
+                if (checkCollider.CompareTag("Roof"))
+                {
+                    if (advancedCard.advancedCardType == AdvancedCardType.tileComponent)
+                    {
+                        BuildingManager.Instance.currentTileComponent++;
+                        Debug.Log("Roof的瓦构件加一");
+                    }
+                    Destroy(currentCard.gameObject);
+                }
+                else if (checkCollider.CompareTag("MainBody"))
+                {
+                    if (advancedCard.advancedCardType == AdvancedCardType.woodenComponent)
+                    {
+                        BuildingManager.Instance.currentWoodComponent++;
+                        Debug.Log("MainBody的木构件加一");
+                    }
+                    else if (advancedCard.advancedCardType == AdvancedCardType.decorativeComponent)
+                    {
+                        BuildingManager.Instance.currentDecorativeComponent++;
+                        Debug.Log("MainBody的装饰构件加一");
+                    }
+                    Destroy(currentCard.gameObject);
+                }
+                else if (checkCollider.CompareTag("PlatformBase"))
+                {
+                    if (advancedCard.advancedCardType == AdvancedCardType.stoneComponent)
+                    {
+                        BuildingManager.Instance.currentStoneComponent++;
+                        Debug.Log("PlatformBase的石构件加一");
+                    }
+                    Destroy(currentCard.gameObject);
+                }
+            }
+        }
     }
 
     private void FollowCursor()
@@ -123,10 +164,26 @@ public class HandManager : SingleTon<HandManager>
     {
         if (currentCard != null)
         {
-            Collider2D cellCollider2D = Physics2D.OverlapCircle(currentCard.transform.position, checkRadius, checkLayer );
+            Collider2D cellCollider2D = Physics2D.OverlapCircle(currentCard.transform.position, checkRadius, cellLayer );
             if (cellCollider2D != null)
             {
                 checkCollider = cellCollider2D;
+                return true;
+            }
+
+            return false;
+        }
+        return false;
+    }
+
+    private bool FindBuilding()
+    {
+        if (currentCard != null&&currentCard.GetComponent<AdvancedCard>())
+        {
+            Collider2D buildingCollider2D = Physics2D.OverlapCircle(currentCard.transform.position, checkRadius, BuildingLayer );
+            if (buildingCollider2D != null)
+            {
+                checkCollider = buildingCollider2D;
                 return true;
             }
 
