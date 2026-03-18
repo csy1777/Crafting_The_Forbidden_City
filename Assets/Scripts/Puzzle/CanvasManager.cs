@@ -34,7 +34,7 @@ public class CanvasManager : MonoBehaviour
     public void CheckAndAttach(GameObject piece)
     {
         RectTransform pieceRect = piece.GetComponent<RectTransform>();
-        float closestDistance = float.MaxValue;
+        //float closestDistance = float.MaxValue;
         Transform targetSlot = null;
 
         foreach (var slot in puzzleSlots)
