@@ -25,11 +25,7 @@ public class BaseCard : Card
    public Transform endPos;
    public float speed = 1f;
    public bool canMove = true;
-
-   private void Start()
-   {
-      canClick = true;
-   }
+   
 
    void Update()
    {
@@ -46,10 +42,16 @@ public class BaseCard : Card
 
    private void OnMouseDown()
    {
-      if (canClick)
+      if (!GameManager.isGameOver)
       {
          HandManager.Instance.SetCurrentCard(this);
          canMove = false;
+         Debug.Log(gameObject.name);
+         if (currentCell)
+         {
+            currentCell.currentCard = null;
+            currentCell = null;
+         }
       }
    }
 }

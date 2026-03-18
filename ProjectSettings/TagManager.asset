@@ -7,6 +7,13 @@ TagManager:
   - Cell
   - Card
   - AdvancedCard
+  - Slot2
+  - Slot1
+  - LeftArea
+  - Slot3
+  - Roof
+  - MainBody
+  - PlatformBase
   layers:
   - Default
   - TransparentFX
@@ -15,7 +22,7 @@ TagManager:
   - Water
   - UI
   - Cell
-  - BackGround
+  - Building
   - 
   - 
   - 
@@ -49,6 +56,9 @@ TagManager:
     locked: 0
   - name: Cell
     uniqueID: 2494640297
+    locked: 0
+  - name: Building
+    uniqueID: 555375181
     locked: 0
   - name: Card
     uniqueID: 2692875783
