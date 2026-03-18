@@ -42,13 +42,16 @@ public class BaseCard : Card
 
    private void OnMouseDown()
    {
-      HandManager.Instance.SetCurrentCard(this);
-      canMove = false;
-      Debug.Log(gameObject.name);
-      if (currentCell)
+      if (!GameManager.isGameOver)
       {
-         currentCell.currentCard = null;
-         currentCell = null;
+         HandManager.Instance.SetCurrentCard(this);
+         canMove = false;
+         Debug.Log(gameObject.name);
+         if (currentCell)
+         {
+            currentCell.currentCard = null;
+            currentCell = null;
+         }
       }
    }
 }

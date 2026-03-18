@@ -6,11 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class BuildingManager : SingleTon<BuildingManager>
 {
-    public int needWoodComponent;
-    public int needStoneComponent;
-    public int needTileComponent;
-    public int needDecorativeComponent;
-    public int SceneIndex;
+    private  int needWoodComponent;
+    private  int needStoneComponent;
+    private  int needTileComponent;
+    private  int needDecorativeComponent;
+    
+    public  int currentWoodComponent=0;
+    public  int currentStoneComponent=0;
+    public  int currentTileComponent=0;
+    public  int currentDecorativeComponent=0;
+    public  int SceneIndex;
 
     private void Start()
     {
@@ -41,6 +46,17 @@ public class BuildingManager : SingleTon<BuildingManager>
                 needTileComponent=6;
                 needDecorativeComponent=8;
                 break;
+        }
+    }
+
+    private void Update()
+    {
+        if (currentWoodComponent >= needWoodComponent &&
+            currentDecorativeComponent >= needDecorativeComponent &&
+            currentStoneComponent >= needStoneComponent &&
+            currentTileComponent >= needTileComponent)
+        {
+           GameManager.Instance.onGameOver?.Invoke();
         }
     }
 }
