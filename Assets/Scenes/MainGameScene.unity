@@ -1972,6 +1972,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1894277855}
   - component: {fileID: 1894277854}
+  - component: {fileID: 1894277857}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -2020,32 +2021,44 @@ SpriteRenderer:
   m_SortingLayerID: 812317727
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ecf3fbb2dddf36d4db968b1a0fbbee75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.18431373}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1894277855
-Transform:
+--- !u!224 &1894277855
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894277853}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0256, y: 0.0289, z: 0}
-  m_LocalScale: {x: 17.941202, y: 12.277164, z: 17.941202}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.2117994, y: 0.82295376, z: 17.941202}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.025574, y: 0.0289}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1894277857
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894277853}
+  m_CullTransparentMesh: 1
 --- !u!1 &1909552618
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,7 +2088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03bfce650c3027e48a942687df285b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentBaseCard: {fileID: 0}
+  currentCard: {fileID: 0}
   checkRadius: 0.25
   checkLayer:
     serializedVersion: 2
@@ -2473,7 +2486,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 1894277855}
   - {fileID: 663936534}
   - {fileID: 120342481}
   - {fileID: 922733449}
@@ -2483,3 +2495,4 @@ SceneRoots:
   - {fileID: 2121777655}
   - {fileID: 1852508886}
   - {fileID: 2082047222}
+  - {fileID: 1894277855}
