@@ -21,9 +21,7 @@ public class HandManager : SingleTon<HandManager>
     
     private void Update()
     {
-        
         FollowCursor();
-        
         //如果手上有卡片,点击空格就能删除
         if (Input.GetKeyDown(KeyCode.Space))
         {

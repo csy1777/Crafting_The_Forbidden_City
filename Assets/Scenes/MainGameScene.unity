@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 465909678}
   m_Layer: 7
   m_Name: MainBody
-  m_TagString: Untagged
+  m_TagString: MainBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1231,7 +1231,7 @@ GameObject:
   - component: {fileID: 1004549548}
   m_Layer: 7
   m_Name: PlatformBase
-  m_TagString: Untagged
+  m_TagString: PlatformBase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1570,7 +1570,7 @@ GameObject:
   - component: {fileID: 1145130010}
   m_Layer: 7
   m_Name: Roof
-  m_TagString: Untagged
+  m_TagString: Roof
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1892,54 +1892,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!1 &1310499141
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1310499142}
-  - component: {fileID: 1310499143}
-  m_Layer: 0
-  m_Name: AdvancedCardManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1310499142
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1310499141}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1310499143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1310499141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27a0c148d790f1d419a6e90a9872fcf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  woodenComponent: {fileID: 7738974945477359799, guid: da37a43901209f8498ce1a287afeba6d, type: 3}
-  stoneComponent: {fileID: 8041465474769159917, guid: 107bbc6a1af93cf42b81bbc20d089deb, type: 3}
-  tileComponent: {fileID: 5347269884060160715, guid: 03476fe1711d12c4fa0c728f770b0db5, type: 3}
-  decorativeComponent: {fileID: 27867937437167926, guid: 59e7268f2d845524daf85a7d5f396fcb, type: 3}
 --- !u!1 &1353437923 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5625689295627345272, guid: 49b14469908aa7e4d9a25dd83ed657e2, type: 3}
@@ -2055,10 +2007,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ee8583943ce38e4988d1f436447c17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  needWoodComponent: 0
-  needStoneComponent: 0
-  needTileComponent: 0
-  needDecorativeComponent: 0
+  currentWoodComponent: 0
+  currentStoneComponent: 0
+  currentTileComponent: 0
+  currentDecorativeComponent: 0
   SceneIndex: 0
 --- !u!1 &1546132937
 GameObject:
@@ -2552,10 +2504,10 @@ MonoBehaviour:
   checkRadius: 0.2
   cellLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   BuildingLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   woodenComponent: {fileID: 3753614336050615709, guid: da37a43901209f8498ce1a287afeba6d, type: 3}
   stoneComponent: {fileID: 724847737024861195, guid: 107bbc6a1af93cf42b81bbc20d089deb, type: 3}
   tileComponent: {fileID: 7474593615752649167, guid: 03476fe1711d12c4fa0c728f770b0db5, type: 3}
@@ -2958,7 +2910,6 @@ SceneRoots:
   - {fileID: 120342481}
   - {fileID: 922733449}
   - {fileID: 1378661635}
-  - {fileID: 1310499142}
   - {fileID: 1909552620}
   - {fileID: 1486604036}
   - {fileID: 2121777655}
