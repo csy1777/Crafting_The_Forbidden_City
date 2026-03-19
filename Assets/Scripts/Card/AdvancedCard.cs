@@ -17,10 +17,9 @@ public class AdvancedCard : Card
 
     private void OnMouseDown()
     {
-        if (!GameManager.isGameOver)
+        if (!GameManager.Instance.isGameOver)
         {
             HandManager.Instance.SetCurrentCard(this);
-            Debug.Log(gameObject.name);
             if (currentCell)
             {
                 currentCell.currentCard = null;

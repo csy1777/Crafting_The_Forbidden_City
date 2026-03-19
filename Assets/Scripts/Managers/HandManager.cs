@@ -32,7 +32,7 @@ public class HandManager : SingleTon<HandManager>
             }
         }
         if (FindCell()&&Input.GetMouseButtonDown(1))
-        {
+        {   
             if (checkCollider != null)
             {
                 Cell cell = checkCollider.GetComponent<Cell>();
@@ -46,7 +46,6 @@ public class HandManager : SingleTon<HandManager>
                             currentCard.GetComponent<SpriteRenderer>().sortingOrder=0;
                             ClearHand();
                             checkCollider = null;
-                            Debug.Log("已成功放入");
                         }
                         else
                         {

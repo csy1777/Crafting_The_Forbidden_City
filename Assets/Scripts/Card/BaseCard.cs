@@ -42,17 +42,16 @@ public class BaseCard : Card
 
    private void OnMouseDown()
    {
-      if (!GameManager.isGameOver)
+      if (!GameManager.Instance.isGameOver)
       {
-         HandManager.Instance.SetCurrentCard(this);
-         GetComponent<SpriteRenderer>().sortingOrder = 10;
-         canMove = false;
-         Debug.Log(gameObject.name);
-         if (currentCell)
-         {
-            currentCell.currentCard = null;
-            currentCell = null;
-         }
+            HandManager.Instance.SetCurrentCard(this);
+            GetComponent<SpriteRenderer>().sortingOrder = 10;
+            canMove = false;
+            if (currentCell)
+            {
+               currentCell.currentCard = null;
+               currentCell = null;
+            }
       }
    }
 }
