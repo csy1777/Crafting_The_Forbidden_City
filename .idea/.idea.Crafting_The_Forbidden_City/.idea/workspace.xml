@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54992be1-8b88-4c26-b1c0-dd575ac78b95" name="更改" comment="" />
+    <list default="true" id="54992be1-8b88-4c26-b1c0-dd575ac78b95" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Crafting_The_Forbidden_City/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crafting_The_Forbidden_City/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,6 +97,7 @@
       <updated>1773838341084</updated>
       <workItem from="1773838343683" duration="763000" />
       <workItem from="1773906039076" duration="6050000" />
+      <workItem from="1773994772227" duration="1191000" />
     </task>
     <servers />
   </component>
