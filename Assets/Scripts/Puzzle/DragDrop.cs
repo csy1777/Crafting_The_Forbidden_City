@@ -6,70 +6,63 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     private Canvas canvas;
-    private Transform originalParent;
+    private Vector2 startAnchoredPos; // 记录按下时的位置，用于判断是否真的在拖动
 
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         if (canvasGroup == null)
-        {
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
-        }
         canvas = GetComponentInParent<Canvas>();
-        originalParent = transform.parent;
     }
 
+    // 按下时：只记录初始位置，不改变视觉状态
     public void OnPointerDown(PointerEventData eventData)
+    {
+        startAnchoredPos = rectTransform.anchoredPosition;
+    }
+
+    // 开始拖拽：才改变视觉状态
+    public void OnBeginDrag(PointerEventData eventData)
     {
         if (canvasGroup != null)
         {
             canvasGroup.alpha = 0.7f;
             canvasGroup.blocksRaycasts = false;
         }
+        transform.SetParent(canvas.transform); // 提升层级
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (eventData.clickCount > 0) // 检测是双击
-        {
-            // 强制恢复状态，解除锁定
-            if (canvasGroup != null)
-            {
-                canvasGroup.alpha = 1f;
-                canvasGroup.blocksRaycasts = true;
-            }
-            // 把拼图放回原来的父物体（右侧区域）
-            transform.SetParent(originalParent);
-            rectTransform.anchoredPosition = Vector2.zero;
-        }
-    }
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        transform.SetParent(canvas.transform); // 拖到最上层
-    }
-
+    // 拖拽中：更新位置
     public void OnDrag(PointerEventData eventData)
     {
-        if (rectTransform != null && canvas != null)
-        {
-            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-        }
+        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
+    // 结束拖拽：强制恢复状态，无论是否真的拖动了
     public void OnEndDrag(PointerEventData eventData)
     {
+        // 强制恢复视觉和交互状态
         if (canvasGroup != null)
         {
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
         }
 
+        // 如果只是单击（位置几乎没变），不做位置判定
+        float moveDistance = Vector2.Distance(rectTransform.anchoredPosition, startAnchoredPos);
+        if (moveDistance < 5f) // 极小阈值，判断为单击
+        {
+            // 单击：位置不变，直接恢复，不调用CheckAndAttach
+            return;
+        }
+
+        // 真正拖动了：才去判定位置
         CanvasManager manager = FindObjectOfType<CanvasManager>();
         if (manager != null)
-        {
             manager.CheckAndAttach(gameObject);
-        }
     }
 
+    // 完全删除OnPointerClick，避免任何点击干扰
 }

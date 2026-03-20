@@ -4,84 +4,136 @@ using System.Collections.Generic;
 
 public class CanvasManager : MonoBehaviour
 {
-    [Header("拼图预设")]
+    [Header("拼图基础配置")]
     public GameObject puzzlePiecePrefab;
+    public Transform rightAreaTransform; // 右侧初始生成区域
+    public float scaleOnAttach = 1.5f;   // 吸附后放大倍数
 
-    [Header("区域引用")]
-    public Transform rightAreaTransform;
-    public List<Transform> puzzleSlots; // 拖入 Slot1、Slot2、Slot3
+    [Header("完成弹窗配置")]
+    public GameObject completePanel;     // 拖拽绑定你创建的弹窗Panel
+    public Text completeText;            // 弹窗里的文字（可选）
+    public string completeContent = "恭喜！机械恐龙拼装完成\n点击任意位置关闭";
+
+    // 三个拼图的目标坐标区间（按你提供的数值）
+    // 三个拼图的目标坐标区间（你当前截图的位置 + 容错范围）
+    private Dictionary<string, (Vector2 min, Vector2 max, Vector2 center)> targetAreas = new Dictionary<string, (Vector2, Vector2, Vector2)>()
+{
+    // Puzzle_0: Pos X=-523, Pos Y=358
+    { "Puzzle_0", (new Vector2(-573, 308), new Vector2(-473, 408), new Vector2(-523, 358)) },
+    // Puzzle_1: Pos X=-523, Pos Y=108
+    { "Puzzle_1", (new Vector2(-573, 58), new Vector2(-473, 158), new Vector2(-523, 108)) },
+    // Puzzle_2: Pos X=-523, Pos Y=-142
+    { "Puzzle_2", (new Vector2(-573, -192), new Vector2(-473, -92), new Vector2(-523, -142)) }
+};
+
+    private int completedCount = 0;      // 已完成拼图数
+    private bool isAllCompleted = false; // 是否全部完成
 
     void Start()
     {
+        // 初始化弹窗：默认隐藏 + 添加点击关闭事件
+        if (completePanel != null)
+        {
+            completePanel.SetActive(false);
+            if (completeText != null) completeText.text = completeContent;
+
+            // 给弹窗添加点击关闭按钮（自动创建，无需手动加）
+            Button closeBtn = completePanel.GetComponent<Button>();
+            if (closeBtn == null) closeBtn = completePanel.AddComponent<Button>();
+            closeBtn.onClick.AddListener(HideCompletePanel);
+        }
+
+        // 生成三个拼图到右侧
         SpawnPuzzlePieces();
     }
 
-        void SpawnPuzzlePieces()
+    // 生成拼图到右侧初始位置
+    void SpawnPuzzlePieces()
+    {
+        for (int i = 0; i < 3; i++)
         {
-            for (int i = 0; i < 3; i++)
-            {
-                GameObject piece = Instantiate(puzzlePiecePrefab, rightAreaTransform);
-                piece.name = "Puzzle_" + i;
+            GameObject piece = Instantiate(puzzlePiecePrefab, rightAreaTransform);
+            piece.name = $"Puzzle_{i}";
 
-                RectTransform rect = piece.GetComponent<RectTransform>();
-
-                // ✔️ 强制固定在右侧面板中间，绝不乱跑！
-                rect.anchoredPosition = new Vector2(0, 150 - 120 * i);
-            }
+            RectTransform rect = piece.GetComponent<RectTransform>();
+            // 调整后的初始坐标：垂直间距拉大，避免重叠
+            rect.anchoredPosition = new Vector2(0, 300 - 300 * i);
+            // 保持250×250大小
+            rect.sizeDelta = new Vector2(250, 250);
         }
+    }
 
-
+    // 核心：坐标区间判定 + 吸附/弹回
     public void CheckAndAttach(GameObject piece)
     {
+        if (isAllCompleted) return; // 全部完成后不再处理
+
         RectTransform pieceRect = piece.GetComponent<RectTransform>();
-        //float closestDistance = float.MaxValue;
-        Transform targetSlot = null;
+        string pieceName = piece.name;
 
-        foreach (var slot in puzzleSlots)
+        // 找不到对应拼图 → 弹回初始位置
+        if (!targetAreas.ContainsKey(pieceName))
         {
-            // 卡槽里有拼图 = 跳过，不能放
-            if (slot.childCount > 0)
-                continue;
+            ResetPieceToRightArea(piece);
+            return;
+        }
 
-            RectTransform slotRect = slot.GetComponent<RectTransform>();
+        var target = targetAreas[pieceName];
+        Vector2 piecePos = pieceRect.anchoredPosition;
 
-            // 👇 进阶优化核心：判断拼图是否进入卡槽范围内！
-            float xDifference = Mathf.Abs(pieceRect.anchoredPosition.x - slotRect.anchoredPosition.x);
-            float yDifference = Mathf.Abs(pieceRect.anchoredPosition.y - slotRect.anchoredPosition.y);
+        // 判断是否在目标坐标区间内
+        bool isInArea = (piecePos.x >= target.min.x && piecePos.x <= target.max.x) &&
+                        (piecePos.y >= target.min.y && piecePos.y <= target.max.y);
 
-            float slotHalfWidth = slotRect.rect.width / 2f + 20f; // +20 让范围更大一点
-            float slotHalfHeight = slotRect.rect.height / 2f + 20f;
+        if (isInArea)
+        {
+            // 吸附到目标中心 + 放大 + 禁用拖拽
+            piece.transform.SetParent(rightAreaTransform.parent);
+            pieceRect.anchoredPosition = target.center;
+            pieceRect.localScale = new Vector3(scaleOnAttach, scaleOnAttach, 1);
+            Destroy(piece.GetComponent<DragDrop>());
 
-            // 拼图在卡槽范围内 = 直接判定放对！
-            if (xDifference < slotHalfWidth && yDifference < slotHalfHeight)
+            // 计数+1，检测是否全部完成
+            completedCount++;
+            if (completedCount >= 3)
             {
-                targetSlot = slot;
-                break; // 找到就停
+                isAllCompleted = true;
+                ShowCompletePanel(); // 弹出完成界面
             }
         }
-
-        // ==============================
-        // 放对了：直接吸附 + 放大 + 固定
-        // ==============================
-        if (targetSlot != null)
-        {
-            piece.transform.SetParent(targetSlot);
-            pieceRect.anchoredPosition = Vector2.zero;
-            pieceRect.localScale = new Vector3(1.5f, 1.5f, 1);
-            Destroy(piece.GetComponent<DragDrop>());
-        }
-        // ==============================
-        // 放错了：弹回右侧原来位置
-        // ==============================
         else
         {
-            int index = 0;
-            string[] parts = piece.name.Split('_');
-            if (parts.Length >= 2)
-                int.TryParse(parts[1], out index);
-
-            piece.transform.SetParent(rightAreaTransform);
-            pieceRect.anchoredPosition = new Vector2(0, 120 - 110 * index);
+            // 不在区间内 → 弹回右侧初始位置
+            ResetPieceToRightArea(piece);
         }
     }
+
+    // 拼图弹回右侧初始位置
+    private void ResetPieceToRightArea(GameObject piece)
+    {
+        int index = int.Parse(piece.name.Split('_')[1]);
+        piece.transform.SetParent(rightAreaTransform);
+
+        RectTransform pieceRect = piece.GetComponent<RectTransform>();
+        // 关键：弹回坐标和初始生成坐标完全一致，避免聚集
+        pieceRect.anchoredPosition = new Vector2(0, 300 - 300 * index);
+        pieceRect.sizeDelta = new Vector2(250, 250); // 确保弹回后大小不变
+        pieceRect.localScale = Vector3.one;
     }
+
+    // 显示完成弹窗
+    private void ShowCompletePanel()
+    {
+        if (completePanel != null)
+        {
+            completePanel.SetActive(true);
+            completePanel.transform.SetAsLastSibling(); // 弹窗置顶
+        }
+    }
+
+    // 关闭完成弹窗
+    public void HideCompletePanel()
+    {
+        if (completePanel != null) completePanel.SetActive(false);
+    }
+}
