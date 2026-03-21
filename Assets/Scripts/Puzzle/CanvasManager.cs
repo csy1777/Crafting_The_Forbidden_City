@@ -11,20 +11,20 @@ public class CanvasManager : MonoBehaviour
 
     [Header("完成弹窗配置")]
     public GameObject completePanel;     // 拖拽绑定你创建的弹窗Panel
-    public Text completeText;            // 弹窗里的文字（可选）
-    public string completeContent = "恭喜！机械恐龙拼装完成\n点击任意位置关闭";
+    public Text completeText;            // 弹窗里的文字（手动在编辑器填）
+
+    // 👇 删掉了 completeContent 变量行
 
     // 三个拼图的目标坐标区间（按你提供的数值）
-    // 三个拼图的目标坐标区间（你当前截图的位置 + 容错范围）
     private Dictionary<string, (Vector2 min, Vector2 max, Vector2 center)> targetAreas = new Dictionary<string, (Vector2, Vector2, Vector2)>()
-{
-    // Puzzle_0: Pos X=-523, Pos Y=358
-    { "Puzzle_0", (new Vector2(-573, 308), new Vector2(-473, 408), new Vector2(-523, 358)) },
-    // Puzzle_1: Pos X=-523, Pos Y=108
-    { "Puzzle_1", (new Vector2(-573, 58), new Vector2(-473, 158), new Vector2(-523, 108)) },
-    // Puzzle_2: Pos X=-523, Pos Y=-142
-    { "Puzzle_2", (new Vector2(-573, -192), new Vector2(-473, -92), new Vector2(-523, -142)) }
-};
+    {
+        // Puzzle_0: Pos X=-523, Pos Y=358
+        { "Puzzle_0", (new Vector2(-573, 308), new Vector2(-473, 408), new Vector2(-523, 358)) },
+        // Puzzle_1: Pos X=-523, Pos Y=108
+        { "Puzzle_1", (new Vector2(-573, 58), new Vector2(-473, 158), new Vector2(-523, 108)) },
+        // Puzzle_2: Pos X=-523, Pos Y=-142
+        { "Puzzle_2", (new Vector2(-573, -192), new Vector2(-473, -92), new Vector2(-523, -142)) }
+    };
 
     private int completedCount = 0;      // 已完成拼图数
     private bool isAllCompleted = false; // 是否全部完成
@@ -35,7 +35,7 @@ public class CanvasManager : MonoBehaviour
         if (completePanel != null)
         {
             completePanel.SetActive(false);
-            if (completeText != null) completeText.text = completeContent;
+            // 👇 删掉了 completeText.text = completeContent; 这行
 
             // 给弹窗添加点击关闭按钮（自动创建，无需手动加）
             Button closeBtn = completePanel.GetComponent<Button>();
