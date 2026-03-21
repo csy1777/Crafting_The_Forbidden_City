@@ -9,18 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenuScene.unity
     guid: 4e0aba98ff829c14dbbf2e6608eb558c
   - enabled: 1
-    path: Assets/Scenes/SelectLevel.unity
-    guid: 3e82534a6fff46e4498485fe8812ac59
-  - enabled: 1
-    path: Assets/Scenes/MainGameScene.unity
+    path: Assets/Scenes/FengtianGate.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/SecondGameScene.unity
+    path: Assets/Scenes/FengtianHall.unity
     guid: 0e7e295c26fb1464db23f41482430935
   - enabled: 1
-    path: Assets/Scenes/ThirdGameScene.unity
+    path: Assets/Scenes/HuagaiHall.unity
     guid: bc513f3f233128e41b9373be3aaea56f
   - enabled: 1
-    path: Assets/Scenes/FourthGameScene.unity
+    path: Assets/Scenes/JinshenHall.unity
     guid: b4a5d91a1cbdb744493a2926d7f67859
   m_configObjects: {}

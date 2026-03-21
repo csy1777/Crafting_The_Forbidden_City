@@ -7,17 +7,35 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : SingleTon<GameManager>
 {
-    public static bool isGameOver = false;
+    public bool isGameOver = false;
     public UnityAction onGameOver;
 
     private void Start()
     {
         onGameOver += TestGameOver;
+        onGameOver += LoadNextGameScene;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 4)
+            {
+                SceneManager.LoadSceneAsync(1);
+                return;
+            }
+            onGameOver?.Invoke();
+        }
     }
 
     public void TestGameOver()
     {
         isGameOver = true;
         Time.timeScale = 0;
+    }
+    public void LoadNextGameScene()
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

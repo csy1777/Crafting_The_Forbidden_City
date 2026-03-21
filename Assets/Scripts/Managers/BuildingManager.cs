@@ -19,7 +19,6 @@ public class BuildingManager : SingleTon<BuildingManager>
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
         SceneIndex=SceneManager.GetActiveScene().buildIndex;
         switch (SceneIndex)
         {
@@ -48,6 +47,7 @@ public class BuildingManager : SingleTon<BuildingManager>
                 needDecorativeComponent=8;
                 break;
         }
+        Debug.Log(needWoodComponent+needStoneComponent+needTileComponent+needDecorativeComponent);
     }
 
     private void Update()
