@@ -6,19 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="54992be1-8b88-4c26-b1c0-dd575ac78b95" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Crafting_The_Forbidden_City/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crafting_The_Forbidden_City/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AdvancedCard/DecorativeComponent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AdvancedCard/DecorativeComponent.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AdvancedCard/StoneComponent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AdvancedCard/StoneComponent.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AdvancedCard/TileComponent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AdvancedCard/TileComponent.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AdvancedCard/WoodenComponent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AdvancedCard/WoodenComponent.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ToolCard/ChiselAndHammer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ToolCard/ChiselAndHammer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ToolCard/GoldPowder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ToolCard/GoldPowder.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ToolCard/KilnFire.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ToolCard/KilnFire.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ToolCard/SawCard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ToolCard/SawCard.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/FengtianGate.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FengtianGate.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Card/AdvancedCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Card/AdvancedCard.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Card/BaseCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Card/BaseCard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Config/Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Config/Config.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/HandManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/HandManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +100,7 @@
       <workItem from="1773906039076" duration="6050000" />
       <workItem from="1773994772227" duration="1526000" />
       <workItem from="1773997291505" duration="5591000" />
+      <workItem from="1774089548877" duration="1757000" />
     </task>
     <servers />
   </component>
