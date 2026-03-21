@@ -19,6 +19,7 @@ public class AdvancedCard : Card
     {
         if (!GameManager.Instance.isGameOver)
         {
+            //AudioManager.Instance.PlayClip(Config.Card_Click,1);
             HandManager.Instance.SetCurrentCard(this);
             if (currentCell)
             {

@@ -31,57 +31,61 @@ public class HandManager : SingleTon<HandManager>
                 ClearHand();
             }
         }
-        if (FindCell()&&Input.GetMouseButtonDown(1))
-        {   
+
+        #region 卡片放入格子和合成
+        if (FindCell() && Input.GetMouseButtonDown(1))
+        {
             if (checkCollider != null)
             {
                 Cell cell = checkCollider.GetComponent<Cell>();
                 {
                     if (cell != null)
                     {
-                        bool success=cell.AddCard(currentCard);
+                        bool success = cell.AddCard(currentCard);
                         if (success)
                         {
-                            currentCard.currentCell=cell;
-                            currentCard.GetComponent<SpriteRenderer>().sortingOrder=0;
+                            AudioManager.Instance.PlayClip(Config.Card_Put, 1);
+                            currentCard.currentCell = cell;
+                            currentCard.GetComponent<SpriteRenderer>().sortingOrder = 0;
                             ClearHand();
                             checkCollider = null;
                         }
                         else
                         {
-                            if (currentCard.cardType == CardType.BaseType&&
+                            if (currentCard.cardType == CardType.BaseType &&
                                 cell.currentCard.cardType == CardType.BaseType)
                             {
-                                handCard=currentCard.GetComponent<BaseCard>();
-                                cellCard=cell.currentCard.GetComponent<BaseCard>();
+                                handCard = currentCard.GetComponent<BaseCard>();
+                                cellCard = cell.currentCard.GetComponent<BaseCard>();
                                 if (handCard != null && cellCard != null)
                                 {
                                     if (handCard.materialCardType == MaterialCardType.none &&
                                         cellCard.toolCardType == ToolCardType.none)
                                     {
-                                        advancedCardType = GetAdvancedCardType(cellCard,handCard);
+                                        advancedCardType = GetAdvancedCardType(cellCard, handCard);
                                     }
                                     else if (handCard.toolCardType == ToolCardType.none &&
                                              cellCard.materialCardType == MaterialCardType.none)
                                     {
-                                        advancedCardType = GetAdvancedCardType(handCard,cellCard);
+                                        advancedCardType = GetAdvancedCardType(handCard, cellCard);
                                     }
                                     else
                                     {
                                         advancedCardType = AdvancedCardType.none;
                                     }
-                                    InstantiateAdvancedCard(advancedCardType,handCard,cellCard);
+
+                                    InstantiateAdvancedCard(advancedCardType, handCard, cellCard);
                                 }
                             }
                             else
                             {
-                                if (currentCard.cardType == CardType.BaseType&&
+                                if (currentCard.cardType == CardType.BaseType &&
                                     cell.currentCard.cardType == CardType.BaseType)
                                 {
                                     Debug.Log("手上的卡片和卡槽里的都是基础卡");
                                 }
-                                else if(currentCard.cardType == CardType.AdvancedType&&
-                                        cell.currentCard.cardType == CardType.AdvancedType)
+                                else if (currentCard.cardType == CardType.AdvancedType &&
+                                         cell.currentCard.cardType == CardType.AdvancedType)
                                 {
                                     Debug.Log("手上的卡片和卡槽里的都是高级卡");
                                 }
@@ -96,6 +100,9 @@ public class HandManager : SingleTon<HandManager>
             }
         }
 
+        #endregion
+
+        #region 高级卡片放入建筑
         if (FindBuilding() && Input.GetMouseButtonDown(1))
         {
             if (checkCollider != null)
@@ -106,8 +113,14 @@ public class HandManager : SingleTon<HandManager>
                     if (advancedCard.advancedCardType == AdvancedCardType.tileComponent)
                     {
                         BuildingManager.Instance.currentTileComponent++;
+                        AudioManager.Instance.PlayClip(Config.AdvancedCard_Put, 1);
                         Debug.Log("Roof的瓦构件加一");
                     }
+                    else
+                    {
+                        AudioManager.Instance.PlayClip(Config.Card_Put_Fail, 1);
+                    }
+
                     Destroy(currentCard.gameObject);
                 }
                 else if (checkCollider.CompareTag("MainBody"))
@@ -115,12 +128,18 @@ public class HandManager : SingleTon<HandManager>
                     if (advancedCard.advancedCardType == AdvancedCardType.woodenComponent)
                     {
                         BuildingManager.Instance.currentWoodComponent++;
+                        AudioManager.Instance.PlayClip(Config.AdvancedCard_Put, 1);
                         Debug.Log("MainBody的木构件加一");
                     }
                     else if (advancedCard.advancedCardType == AdvancedCardType.decorativeComponent)
                     {
                         BuildingManager.Instance.currentDecorativeComponent++;
+                        AudioManager.Instance.PlayClip(Config.AdvancedCard_Put, 1);
                         Debug.Log("MainBody的装饰构件加一");
+                    }
+                    else
+                    {
+                        AudioManager.Instance.PlayClip(Config.Card_Put_Fail, 1);
                     }
                     Destroy(currentCard.gameObject);
                 }
@@ -129,12 +148,19 @@ public class HandManager : SingleTon<HandManager>
                     if (advancedCard.advancedCardType == AdvancedCardType.stoneComponent)
                     {
                         BuildingManager.Instance.currentStoneComponent++;
+                        AudioManager.Instance.PlayClip(Config.AdvancedCard_Put, 1);
                         Debug.Log("PlatformBase的石构件加一");
+                    }
+                    else
+                    {
+                        AudioManager.Instance.PlayClip(Config.Card_Put_Fail, 1);
                     }
                     Destroy(currentCard.gameObject);
                 }
             }
         }
+        #endregion
+       
     }
 
     private void FollowCursor()
@@ -155,6 +181,10 @@ public class HandManager : SingleTon<HandManager>
     }
     public void ClearHand()
     {
+        if (currentCard != null)
+        {
+            currentCard.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }
         currentCard = null;
     }
     private bool FindCell()
@@ -227,27 +257,32 @@ public class HandManager : SingleTon<HandManager>
         {
             AdvancedCard obj=Instantiate(woodenComponent);
             currentCard = obj;
+            AudioManager.Instance.PlayClip(Config.AdvancedCard_Generate,1);
         }
         else if (cardType == AdvancedCardType.stoneComponent)
         {
             AdvancedCard obj=Instantiate(stoneComponent);
             currentCard = obj;
-            
+            AudioManager.Instance.PlayClip(Config.AdvancedCard_Generate,1);
         }
         else if (cardType == AdvancedCardType.tileComponent)
         {
             AdvancedCard obj=Instantiate(tileComponent);
             currentCard = obj;
+            AudioManager.Instance.PlayClip(Config.AdvancedCard_Generate,1);
         }
         else if (cardType == AdvancedCardType.decorativeComponent)
         {
             AdvancedCard obj=Instantiate(decorativeComponent);
             currentCard = obj;
+            AudioManager.Instance.PlayClip(Config.AdvancedCard_Generate,1);
         }
         else if (cardType == AdvancedCardType.none)
         {
             Debug.Log("NO Match,Delete");
+            ClearHand();
         }
+        //AudioManager.Instance.PlayClip(Config.Card_Destroy,1);
         Destroy(handCard.gameObject);
         Destroy(cellCard.gameObject);
     }

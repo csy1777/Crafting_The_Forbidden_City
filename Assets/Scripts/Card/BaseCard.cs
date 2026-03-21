@@ -37,13 +37,14 @@ public class BaseCard : Card
          if (Vector3.Distance(transform.position, endPos.position) < 0.1f)
             Destroy(gameObject);
       }
+
       
    }
-
    private void OnMouseDown()
    {
       if (!GameManager.Instance.isGameOver)
       {
+            //AudioManager.Instance.PlayClip(Config.Card_Click,1);
             HandManager.Instance.SetCurrentCard(this);
             GetComponent<SpriteRenderer>().sortingOrder = 10;
             canMove = false;
