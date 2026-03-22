@@ -309,7 +309,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1932610575}
+      - m_Target: {fileID: 1932610577}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadSceneByName
         m_Mode: 5
@@ -554,7 +554,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 324266279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71fc2c1f803c5d4ea1df3476bb17aac, type: 3}
+  m_Script: {fileID: 11500000, guid: f2a7ae2b06c4da04e817c8ae299f79b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 2112919973}
@@ -969,9 +969,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a1479e1ebd8cd4fbebc7d21c5b5727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeSlider: {fileID: 1721581513}
-  volumeText: {fileID: 0}
-  playerPrefsKey: MasterVolume
 --- !u!1 &1599128012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,7 +1093,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1671773752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b56c131bd6446a54087a4a7e3ae0f4c8, type: 3}
+  m_Script: {fileID: 11500000, guid: e545287d40d7958438d926d0a4ab7607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1673327714
@@ -1878,6 +1875,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1885072052}
   - component: {fileID: 1885072053}
+  - component: {fileID: 1885072054}
   m_Layer: 5
   m_Name: BgMusic
   m_TagString: Untagged
@@ -2000,6 +1998,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1885072054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885072051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f3a81fad64b446b2de10258ef6636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 1721581513}
+  volumeText: {fileID: 0}
+  playerPrefsKey: MasterVolume
 --- !u!1 &1932610574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,7 +2022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1932610576}
-  - component: {fileID: 1932610575}
+  - component: {fileID: 1932610577}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -2017,18 +2030,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1932610575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932610574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a30d30da5f67b5649a099c9e78fb4c65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1932610576
 Transform:
   m_ObjectHideFlags: 0
@@ -2044,6 +2045,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1885020968}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1932610577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932610574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619801f14f4398244b85833da438a336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2028492561
 GameObject:
   m_ObjectHideFlags: 0
