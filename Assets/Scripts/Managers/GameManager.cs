@@ -32,7 +32,6 @@ public class GameManager : SingleTon<GameManager>
     public void TestGameOver()
     {
         isGameOver = true;
-        Time.timeScale = 0;
     }
     public void LoadNextGameScene()
     {

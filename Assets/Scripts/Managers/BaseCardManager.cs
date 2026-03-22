@@ -16,7 +16,6 @@ public class BaseCardManager : SingleTon<BaseCardManager>
 
     private void Start()
     {
-        Time.timeScale = 1;
         StartCoroutine(SpawnBaseCard());
     }
     
