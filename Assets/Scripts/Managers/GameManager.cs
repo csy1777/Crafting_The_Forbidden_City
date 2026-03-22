@@ -31,6 +31,7 @@ public class GameManager : SingleTon<GameManager>
 
     public void TestGameOver()
     {
+        Debug.Log("Game Over");
         isGameOver = true;
     }
     public void LoadNextGameScene()

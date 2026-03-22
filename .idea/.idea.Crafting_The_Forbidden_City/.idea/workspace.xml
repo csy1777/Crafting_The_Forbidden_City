@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54992be1-8b88-4c26-b1c0-dd575ac78b95" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Crafting_The_Forbidden_City/.idea/indexLayout.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Crafting_The_Forbidden_City/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crafting_The_Forbidden_City/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_D:/unitysecond/Crafting_The_Forbidden_City(Git)/Crafting_The_Forbidden_City" value="3B7Rse7AccK3Znn6GosY38AsDwB" />
+    </persistenceIdMap>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -102,6 +107,9 @@
       <workItem from="1773997291505" duration="5591000" />
       <workItem from="1774089548877" duration="2354000" />
       <workItem from="1774092589040" duration="33000" />
+      <workItem from="1774148065170" duration="1744000" />
+      <workItem from="1774150163612" duration="451000" />
+      <workItem from="1774150655749" duration="490000" />
     </task>
     <servers />
   </component>
@@ -115,4 +123,12 @@
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
 </project>
