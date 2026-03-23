@@ -23,7 +23,7 @@ public class BaseCardManager : SingleTon<BaseCardManager>
     IEnumerator SpawnBaseCard()
     {
         yield return new WaitForSeconds(.5f);
-        while (!GameManager.isGameOver)
+        while (!GameManager.Instance.isGameOver)
         {
             GetRandomCard();
             yield return new WaitForSeconds(intervalGenerationTime);
