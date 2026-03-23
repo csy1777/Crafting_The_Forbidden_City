@@ -18,8 +18,8 @@ public class CraftingSystem : MonoBehaviour
         },
         { "start_dialog", new string[]
             {
-                "欢迎进入游戏！",
-                "这是第一关。",
+                "[老者]欢迎进入游戏！",
+                "[青年]这是第一关。",
                 "继续探索吧！"
             }
         },
