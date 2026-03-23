@@ -5,27 +5,33 @@ using UnityEngine;
 
 public class HandManager : SingleTon<HandManager>
 {
-    public BaseCard currentBaseCard;
+    public Card currentCard;
     public float checkRadius=1;
-    public LayerMask checkLayer;
+    public LayerMask cellLayer;
+    public LayerMask BuildingLayer;
+    public AdvancedCard woodenComponent;
+    public AdvancedCard stoneComponent;
+    public AdvancedCard tileComponent;
+    public AdvancedCard decorativeComponent;
     private Vector3 handPos;
     private Collider2D checkCollider;
+    private AdvancedCardType advancedCardType=AdvancedCardType.none;
+    private BaseCard handCard;
+    private BaseCard cellCard;
     
     private void Update()
     {
         FollowCursor();
-        
-        //如果手上有卡片,点击鼠标右键就能删除
-        if (Input.GetMouseButtonDown(1))
+        //如果手上有卡片,点击空格就能删除
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (currentBaseCard != null)
+            if (currentCard != null)
             {
-                Destroy(currentBaseCard.gameObject);
+                Destroy(currentCard.gameObject);
                 ClearHand();
             }
         }
-        
-        if (FindCell()&&Input.GetMouseButtonDown(0))
+        if (FindCell()&&Input.GetMouseButtonDown(1))
         {
             if (checkCollider != null)
             {
@@ -33,19 +39,100 @@ public class HandManager : SingleTon<HandManager>
                 {
                     if (cell != null)
                     {
-                        bool success=cell.AddBaseCard(currentBaseCard);
+                        bool success=cell.AddCard(currentCard);
                         if (success)
                         {
-                            currentBaseCard.canClick=false;
+                            currentCard.currentCell=cell;
+                            currentCard.GetComponent<SpriteRenderer>().sortingOrder=0;
                             ClearHand();
                             checkCollider = null;
+                            Debug.Log("已成功放入");
                         }
                         else
                         {
-                            Debug.Log(currentBaseCard);
-                            Debug.Log(cell.currentBaseCard);
+                            if (currentCard.cardType == CardType.BaseType&&
+                                cell.currentCard.cardType == CardType.BaseType)
+                            {
+                                handCard=currentCard.GetComponent<BaseCard>();
+                                cellCard=cell.currentCard.GetComponent<BaseCard>();
+                                if (handCard != null && cellCard != null)
+                                {
+                                    if (handCard.materialCardType == MaterialCardType.none &&
+                                        cellCard.toolCardType == ToolCardType.none)
+                                    {
+                                        advancedCardType = GetAdvancedCardType(cellCard,handCard);
+                                    }
+                                    else if (handCard.toolCardType == ToolCardType.none &&
+                                             cellCard.materialCardType == MaterialCardType.none)
+                                    {
+                                        advancedCardType = GetAdvancedCardType(handCard,cellCard);
+                                    }
+                                    else
+                                    {
+                                        advancedCardType = AdvancedCardType.none;
+                                    }
+                                    InstantiateAdvancedCard(advancedCardType,handCard,cellCard);
+                                }
+                            }
+                            else
+                            {
+                                if (currentCard.cardType == CardType.BaseType&&
+                                    cell.currentCard.cardType == CardType.BaseType)
+                                {
+                                    Debug.Log("手上的卡片和卡槽里的都是基础卡");
+                                }
+                                else if(currentCard.cardType == CardType.AdvancedType&&
+                                        cell.currentCard.cardType == CardType.AdvancedType)
+                                {
+                                    Debug.Log("手上的卡片和卡槽里的都是高级卡");
+                                }
+                                else
+                                {
+                                    Debug.Log("手上的卡片和卡槽里的一个是基础卡,一个是高级卡");
+                                }
+                            }
                         }
                     }
+                }
+            }
+        }
+
+        if (FindBuilding() && Input.GetMouseButtonDown(1))
+        {
+            if (checkCollider != null)
+            {
+                AdvancedCard advancedCard = currentCard.GetComponent<AdvancedCard>();
+                if (checkCollider.CompareTag("Roof"))
+                {
+                    if (advancedCard.advancedCardType == AdvancedCardType.tileComponent)
+                    {
+                        BuildingManager.Instance.currentTileComponent++;
+                        Debug.Log("Roof的瓦构件加一");
+                    }
+                    Destroy(currentCard.gameObject);
+                }
+                else if (checkCollider.CompareTag("MainBody"))
+                {
+                    if (advancedCard.advancedCardType == AdvancedCardType.woodenComponent)
+                    {
+                        BuildingManager.Instance.currentWoodComponent++;
+                        Debug.Log("MainBody的木构件加一");
+                    }
+                    else if (advancedCard.advancedCardType == AdvancedCardType.decorativeComponent)
+                    {
+                        BuildingManager.Instance.currentDecorativeComponent++;
+                        Debug.Log("MainBody的装饰构件加一");
+                    }
+                    Destroy(currentCard.gameObject);
+                }
+                else if (checkCollider.CompareTag("PlatformBase"))
+                {
+                    if (advancedCard.advancedCardType == AdvancedCardType.stoneComponent)
+                    {
+                        BuildingManager.Instance.currentStoneComponent++;
+                        Debug.Log("PlatformBase的石构件加一");
+                    }
+                    Destroy(currentCard.gameObject);
                 }
             }
         }
@@ -53,29 +140,29 @@ public class HandManager : SingleTon<HandManager>
 
     private void FollowCursor()
     {
-        if (currentBaseCard == null)
+        if (currentCard == null)
         {
             return;
         }
 
         handPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        handPos.z = currentBaseCard.transform.position.z;
-        currentBaseCard.transform.position = handPos;
+        handPos.z = currentCard.transform.position.z;
+        currentCard.transform.position = handPos;
     }
 
-    public void SetCurrentBaseCard(BaseCard baseCard)
+    public void SetCurrentCard(Card Card)
     {
-        currentBaseCard=baseCard;
+        currentCard=Card;
     }
     public void ClearHand()
     {
-        currentBaseCard = null;
+        currentCard = null;
     }
     private bool FindCell()
     {
-        if (currentBaseCard != null)
+        if (currentCard != null)
         {
-            Collider2D cellCollider2D = Physics2D.OverlapCircle(currentBaseCard.transform.position, checkRadius, checkLayer );
+            Collider2D cellCollider2D = Physics2D.OverlapCircle(currentCard.transform.position, checkRadius, cellLayer );
             if (cellCollider2D != null)
             {
                 checkCollider = cellCollider2D;
@@ -87,10 +174,90 @@ public class HandManager : SingleTon<HandManager>
         return false;
     }
 
+    private bool FindBuilding()
+    {
+        if (currentCard != null&&currentCard.GetComponent<AdvancedCard>())
+        {
+            Collider2D buildingCollider2D = Physics2D.OverlapCircle(currentCard.transform.position, checkRadius, BuildingLayer );
+            if (buildingCollider2D != null)
+            {
+                checkCollider = buildingCollider2D;
+                return true;
+            }
+
+            return false;
+        }
+        return false;
+    }
+    private AdvancedCardType GetAdvancedCardType(BaseCard materialCard,BaseCard toolCard)
+    {
+        if (materialCard.materialCardType == MaterialCardType.wood &&
+            toolCard.toolCardType == ToolCardType.saw)
+        {
+            Debug.Log("合成了木构件");
+            return AdvancedCardType.woodenComponent;
+        }
+        else if (materialCard.materialCardType == MaterialCardType.stone &&
+            toolCard.toolCardType == ToolCardType.chiselAndhammer)
+        {
+            Debug.Log("合成了石构件");
+            return AdvancedCardType.stoneComponent;
+        }
+        else if (materialCard.materialCardType == MaterialCardType.clay &&
+            toolCard.toolCardType == ToolCardType.kilnFire)
+        {
+            Debug.Log("合成了瓦构件");
+            return AdvancedCardType.tileComponent;
+        }
+        else if (materialCard.materialCardType == MaterialCardType.paint &&
+            toolCard.toolCardType == ToolCardType.goldPowder)
+        {
+            Debug.Log("合成了装饰构件");
+            return AdvancedCardType.decorativeComponent;
+        }
+        else
+        {
+            Debug.Log("材料类型和工具类型没匹配");
+            return AdvancedCardType.none;
+        }
+    }
+
+    private void InstantiateAdvancedCard(AdvancedCardType cardType,BaseCard handCard,BaseCard cellCard)
+    {
+        if (cardType == AdvancedCardType.woodenComponent)
+        {
+            AdvancedCard obj=Instantiate(woodenComponent);
+            currentCard = obj;
+        }
+        else if (cardType == AdvancedCardType.stoneComponent)
+        {
+            AdvancedCard obj=Instantiate(stoneComponent);
+            currentCard = obj;
+            
+        }
+        else if (cardType == AdvancedCardType.tileComponent)
+        {
+            AdvancedCard obj=Instantiate(tileComponent);
+            currentCard = obj;
+        }
+        else if (cardType == AdvancedCardType.decorativeComponent)
+        {
+            AdvancedCard obj=Instantiate(decorativeComponent);
+            currentCard = obj;
+        }
+        else if (cardType == AdvancedCardType.none)
+        {
+            Debug.Log("NO Match,Delete");
+        }
+        Destroy(handCard.gameObject);
+        Destroy(cellCard.gameObject);
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        if (currentBaseCard != null)
-            Gizmos.DrawWireSphere(currentBaseCard.transform.position, checkRadius);
+        if (currentCard != null)
+            Gizmos.DrawWireSphere(currentCard.transform.position, checkRadius);
     }
+    
 }

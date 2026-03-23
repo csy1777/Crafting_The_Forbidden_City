@@ -18,14 +18,15 @@ public enum ToolCardType
    none
 }
 
-public class BaseCard : MonoBehaviour
+public class BaseCard : Card
 {
    public MaterialCardType materialCardType;
    public ToolCardType toolCardType;
    public Transform endPos;
    public float speed = 1f;
    public bool canMove = true;
-   public bool canClick = true;
+   
+
    void Update()
    {
       if (endPos == null) return;
@@ -36,32 +37,22 @@ public class BaseCard : MonoBehaviour
          if (Vector3.Distance(transform.position, endPos.position) < 0.1f)
             Destroy(gameObject);
       }
-
-      /*if (Input.GetMouseButtonDown(0) && currentCell != null)
-      {
-         if (currentCell.AddBaseCard(this))
-         {
-            HandManager.Instance.ClearHand();
-         }
-      }*/
+      
    }
 
    private void OnMouseDown()
    {
-      if (canClick)
+      if (!GameManager.isGameOver)
       {
-         HandManager.Instance.SetCurrentBaseCard(this);
+         HandManager.Instance.SetCurrentCard(this);
+         GetComponent<SpriteRenderer>().sortingOrder = 10;
          canMove = false;
+         Debug.Log(gameObject.name);
+         if (currentCell)
+         {
+            currentCell.currentCard = null;
+            currentCell = null;
+         }
       }
    }
-
-   /*
-   private void OnTriggerEnter2D(Collider2D other)
-   {
-      if (other.gameObject.tag == "Cell")
-      {
-         currentCell = other.GetComponent<Cell>();
-      }
-   }
-   */
 }
