@@ -1,20 +1,20 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;   // 如果用 TextMeshPro，请替换为 using TMPro;
+using UnityEngine.UI; 
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
     [Header("UI 引用")]
-    public GameObject dialoguePanel;   // 对话框面板
-    public Text dialogueText;          // 显示文本的组件（若用 TMP 则类型为 TMP_Text）
+    public GameObject dialoguePanel;   
+    public Text dialogueText;          
 
     [Header("头像设置")]
-    public Image leftAvatar;   // 左侧头像
-    public Image rightAvatar;  // 右侧头像
-    public Sprite elderSprite; // 老者图片
-    public Sprite youthSprite; // 青年图片
+    public Image leftAvatar;   
+    public Image rightAvatar;  
+    public Sprite elderSprite; 
+    public Sprite youthSprite; 
 
     [Header("打字速度")]
     public float typingSpeed = 0.05f;  // 每个字符间隔秒数
@@ -26,7 +26,7 @@ public class DialogueManager : MonoBehaviour
 
     void Awake()
     {
-        // 单例模式，确保全局唯一
+        
         if (Instance == null)
         {
             Instance = this;
@@ -63,21 +63,7 @@ public class DialogueManager : MonoBehaviour
         ShowCurrentLine();
     }
 
-    // 显示当前句子（开启打字效果）
-    //private void ShowCurrentLine()
-    //{
-    //    if (currentLineIndex < currentLines.Length)
-    //    {
-    //        string line = currentLines[currentLineIndex];
-    //        if (typingCoroutine != null)
-    //            StopCoroutine(typingCoroutine);
-    //        typingCoroutine = StartCoroutine(TypeText(line));
-    //    }
-    //    else
-    //    {
-    //        EndDialogue();
-    //    }
-    //}
+   
     private void ShowCurrentLine()
     {
         if (currentLineIndex < currentLines.Length)
@@ -130,25 +116,7 @@ public class DialogueManager : MonoBehaviour
         typingCoroutine = null;
     }
 
-    //// 处理“下一句”逻辑
-    //private void HandleNextLine()
-    //{
-    //    if (isTyping)
-    //    {
-    //        // 正在打字时：立即显示完整句子
-    //        if (typingCoroutine != null)
-    //            StopCoroutine(typingCoroutine);
-    //        dialogueText.text = currentLines[currentLineIndex];
-    //        isTyping = false;
-    //        typingCoroutine = null;
-    //    }
-    //    else
-    //    {
-    //        // 显示下一句
-    //        currentLineIndex++;
-    //        ShowCurrentLine();
-    //    }
-    //}
+   
     private void HandleNextLine()
     {
         if (isTyping)
@@ -178,7 +146,7 @@ public class DialogueManager : MonoBehaviour
         if (rawText.StartsWith("[老者]"))
         {
             speaker = "elder";
-            return rawText.Substring(4); // 去掉 "[老者]" 四个字符
+            return rawText.Substring(4); // 去掉 "[老者]" 
         }
         else if (rawText.StartsWith("[青年]"))
         {

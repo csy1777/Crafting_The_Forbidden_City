@@ -3,9 +3,7 @@ using System.Collections.Generic;
 
 public class CraftingSystem : MonoBehaviour
 {
-    public static CraftingSystem Instance;  // 单例
-    // 物品对话映射表：物品ID → 对话内容（字符串数组）
-    // 你可以在下方直接添加或修改所有物品的对话
+    public static CraftingSystem Instance;  
     private Dictionary<string, string[]> itemDialogues = new Dictionary<string, string[]>()
     {
      
@@ -65,11 +63,11 @@ public class CraftingSystem : MonoBehaviour
     };
     void Awake()
     {
-        // 单例初始化
+        
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);  
+            
         }
         else
         {
@@ -86,26 +84,24 @@ public class CraftingSystem : MonoBehaviour
     /// <param name="itemId">合成结果的物品ID，必须与字典中的键一致</param>
     public void CraftItem(string itemId)
     {
-        // ========== 在这里编写你的实际合成逻辑 ==========
-        // 例如：检查材料、扣除资源、生成物品到背包等
-        // =============================================
+        
 
         // 首次合成判断
         if (!craftedItems.Contains(itemId))
         {
             craftedItems.Add(itemId);
 
-            // 查找该物品是否有对话配置
+            
             if (itemDialogues.TryGetValue(itemId, out string[] lines))
             {
                 // 启动对话
                 DialogueManager.Instance.StartDialogue(lines);
             }
-            // 如果没有配置对话，则什么都不做
+            
         }
     }
 
-    // 可选：手动触发某个物品的对话（用于测试或特殊场合）
+    // 手动触发某个物品的对话（用于测试或特殊场合）
     public void ShowDialogueForItem(string itemId)
     {
         if (itemDialogues.TryGetValue(itemId, out string[] lines))
