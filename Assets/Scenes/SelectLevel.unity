@@ -224,7 +224,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1645399823}
+      - m_Target: {fileID: 1645399825}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadSceneByName
         m_Mode: 5
@@ -233,7 +233,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MainGameScene
+          m_StringArgument: FengtianGate
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &522504321
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1645399823}
+      - m_Target: {fileID: 1645399825}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadSceneByName
         m_Mode: 5
@@ -367,7 +367,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: ThirdGameScene
+          m_StringArgument: JinshenHall
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &544962442
@@ -966,7 +966,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1645399823}
+      - m_Target: {fileID: 1645399825}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadSceneByName
         m_Mode: 5
@@ -975,7 +975,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: FourthGameScene
+          m_StringArgument: HuagaiHall
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1399162113
@@ -1118,7 +1118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1645399824}
-  - component: {fileID: 1645399823}
+  - component: {fileID: 1645399825}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -1126,18 +1126,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1645399823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645399822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a30d30da5f67b5649a099c9e78fb4c65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1645399824
 Transform:
   m_ObjectHideFlags: 0
@@ -1153,6 +1141,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1027714355}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1645399825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645399822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619801f14f4398244b85833da438a336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1742032334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1645399823}
+      - m_Target: {fileID: 1645399825}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadSceneByName
         m_Mode: 5
@@ -1321,7 +1321,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SecondGameScene
+          m_StringArgument: FengtianHall
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1748296150
