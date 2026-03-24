@@ -310,6 +310,10 @@ MonoBehaviour:
   puzzlePiecePrefab: {fileID: 1546520524064285868, guid: 81ea05557c262634eb1d0d569cb49471, type: 3}
   rightAreaTransform: {fileID: 784452054}
   scaleOnAttach: 1.5
+  puzzleSprites:
+  - {fileID: 21300000, guid: eac5a8b53cf0a3c4f895c543001caf73, type: 3}
+  - {fileID: 21300000, guid: c41bb6a3e3f20084eb11d3701a59f313, type: 3}
+  - {fileID: 21300000, guid: 5f5a984cebba48e4b8bf58494c93e9c1, type: 3}
   completePanel: {fileID: 1094173547}
   completeText: {fileID: 0}
 --- !u!1 &461887561

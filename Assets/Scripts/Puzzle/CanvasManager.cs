@@ -8,12 +8,12 @@ public class CanvasManager : MonoBehaviour
     public GameObject puzzlePiecePrefab;
     public Transform rightAreaTransform; // 右侧初始生成区域
     public float scaleOnAttach = 1.5f;   // 吸附后放大倍数
+    // 新增：三个拼图对应的素材图片（直接在编辑器拖入）
+    public Sprite[] puzzleSprites;       // 长度为3的数组，依次对应Puzzle_0、Puzzle_1、Puzzle_2
 
     [Header("完成弹窗配置")]
     public GameObject completePanel;     // 拖拽绑定你创建的弹窗Panel
     public Text completeText;            // 弹窗里的文字（手动在编辑器填）
-
-    // 👇 删掉了 completeContent 变量行
 
     // 三个拼图的目标坐标区间（按你提供的数值）
     private Dictionary<string, (Vector2 min, Vector2 max, Vector2 center)> targetAreas = new Dictionary<string, (Vector2, Vector2, Vector2)>()
@@ -35,21 +35,26 @@ public class CanvasManager : MonoBehaviour
         if (completePanel != null)
         {
             completePanel.SetActive(false);
-            // 👇 删掉了 completeText.text = completeContent; 这行
-
             // 给弹窗添加点击关闭按钮（自动创建，无需手动加）
             Button closeBtn = completePanel.GetComponent<Button>();
             if (closeBtn == null) closeBtn = completePanel.AddComponent<Button>();
             closeBtn.onClick.AddListener(HideCompletePanel);
         }
 
-        // 生成三个拼图到右侧
+        // 生成三个拼图到右侧（带不同素材）
         SpawnPuzzlePieces();
     }
 
-    // 生成拼图到右侧初始位置
+    // 生成拼图到右侧初始位置（新增素材赋值逻辑）
     void SpawnPuzzlePieces()
     {
+        // 校验素材数组长度
+        if (puzzleSprites == null || puzzleSprites.Length < 3)
+        {
+            Debug.LogError("请在CanvasManager中配置3个拼图素材！");
+            return;
+        }
+
         for (int i = 0; i < 3; i++)
         {
             GameObject piece = Instantiate(puzzlePiecePrefab, rightAreaTransform);
@@ -60,6 +65,18 @@ public class CanvasManager : MonoBehaviour
             rect.anchoredPosition = new Vector2(0, 300 - 300 * i);
             // 保持250×250大小
             rect.sizeDelta = new Vector2(250, 250);
+
+            // 给当前拼图块赋值对应的素材
+            Image pieceImage = piece.GetComponent<Image>();
+            if (pieceImage != null)
+            {
+                pieceImage.sprite = puzzleSprites[i];
+                pieceImage.preserveAspect = true; // 保持图片比例（可选）
+            }
+            else
+            {
+                Debug.LogWarning($"Puzzle_{i}预制体缺少Image组件，请添加！");
+            }
         }
     }
 
