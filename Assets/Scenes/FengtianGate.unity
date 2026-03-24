@@ -1791,7 +1791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1198790891
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2260,7 +2260,7 @@ GameObject:
   - component: {fileID: 1673252306}
   - component: {fileID: 1673252305}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: DialogText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2318,7 +2318,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6587\u5B57\u6587\u5B57\u6587\u5B57\u6587\u5B57\u6587\u5B57\u6587\u5B57\u6587\u5B57\u6587\u5B57\u6587\u5B57\u6587\u5B57\u6587\u5B57\u6587\u5B57\u6587\u5B57\u6587\u5B57\u6587\u5B57\u6587\u5B57"
+  m_Text: "\u6D4B\u8BD5\u6587\u5B57"
 --- !u!222 &1673252306
 CanvasRenderer:
   m_ObjectHideFlags: 0
