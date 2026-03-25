@@ -19,8 +19,9 @@ public class AdvancedCard : Card
     {
         if (!GameManager.Instance.isGameOver)
         {
-            //AudioManager.Instance.PlayClip(Config.Card_Click,1);
+            AudioManager.Instance.PlayClip(Config.Card_Click,1);
             HandManager.Instance.SetCurrentCard(this);
+            GetComponent<SpriteRenderer>().sortingOrder = 10;
             if (currentCell)
             {
                 currentCell.currentCard = null;
