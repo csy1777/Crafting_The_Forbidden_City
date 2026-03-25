@@ -77,6 +77,8 @@ public class HandManager : SingleTon<HandManager>
                                     InstantiateAdvancedCard(advancedCardType, handCard, cellCard);
                                 }
                             }
+
+                            #region 如果手上的卡片和卡槽里的卡片不是同一类型,就不能合成,直接提示
                             else
                             {
                                 if (currentCard.cardType == CardType.BaseType &&
@@ -94,6 +96,7 @@ public class HandManager : SingleTon<HandManager>
                                     Debug.Log("手上的卡片和卡槽里的一个是基础卡,一个是高级卡");
                                 }
                             }
+                            #endregion
                         }
                     }
                 }
@@ -290,9 +293,10 @@ public class HandManager : SingleTon<HandManager>
         else if (cardType == AdvancedCardType.none)
         {
             Debug.Log("NO Match,Delete");
+            AudioManager.Instance.PlayClip(Config.Card_Put_Fail,1);
             ClearHand();
         }
-        //AudioManager.Instance.PlayClip(Config.Card_Destroy,1);
+        
         Destroy(handCard.gameObject);
         Destroy(cellCard.gameObject);
     }
@@ -303,5 +307,4 @@ public class HandManager : SingleTon<HandManager>
         if (currentCard != null)
             Gizmos.DrawWireSphere(currentCard.transform.position, checkRadius);
     }
-    
 }
