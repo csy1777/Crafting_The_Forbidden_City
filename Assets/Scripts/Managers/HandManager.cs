@@ -128,12 +128,22 @@ public class HandManager : SingleTon<HandManager>
                     if (advancedCard.advancedCardType == AdvancedCardType.woodenComponent)
                     {
                         BuildingManager.Instance.currentWoodComponent++;
+                        
+                        if(BuildingManager.Instance.currentWoodComponent<=
+                           BuildingManager.Instance.needWoodComponent)
+                        BuildingManager.Instance.mainBodyPoint++;
+                        
                         AudioManager.Instance.PlayClip(Config.AdvancedCard_Put, 1);
                         Debug.Log("MainBody的木构件加一");
                     }
                     else if (advancedCard.advancedCardType == AdvancedCardType.decorativeComponent)
                     {
                         BuildingManager.Instance.currentDecorativeComponent++;
+                        
+                        if(BuildingManager.Instance.currentDecorativeComponent<=
+                           BuildingManager.Instance.needDecorativeComponent)
+                        BuildingManager.Instance.mainBodyPoint++;
+                        
                         AudioManager.Instance.PlayClip(Config.AdvancedCard_Put, 1);
                         Debug.Log("MainBody的装饰构件加一");
                     }

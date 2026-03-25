@@ -12,13 +12,15 @@ public class BaseCardManager : SingleTon<BaseCardManager>
     public float intervalGenerationTime;
    
     public List<BaseCard> baseCards =new List<BaseCard>();
-    
 
-    private void Start()
+    private void Update()
     {
-        StartCoroutine(SpawnBaseCard());
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            StartCoroutine(SpawnBaseCard());
+        }
     }
-    
+
 
     IEnumerator SpawnBaseCard()
     {
