@@ -12,7 +12,7 @@ public class GameManager : SingleTon<GameManager>
 
     private void Start()
     {
-        onGameOver += TestGameOver;
+        onGameOver += GameOver;
         onGameOver += LoadNextGameScene;
     }
 
@@ -29,10 +29,10 @@ public class GameManager : SingleTon<GameManager>
         }
     }
 
-    public void TestGameOver()
+    public void GameOver()
     {
+        Debug.Log("Game Over");
         isGameOver = true;
-        Time.timeScale = 0;
     }
     public void LoadNextGameScene()
     {

@@ -7,12 +7,23 @@
     <list default="true" id="54992be1-8b88-4c26-b1c0-dd575ac78b95" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Crafting_The_Forbidden_City/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crafting_The_Forbidden_City/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/FengtianGate.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FengtianGate.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Card/BaseCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Card/BaseCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FengtianHall.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FengtianHall.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/HuagaiHall.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/HuagaiHall.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JinshenHall.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/JinshenHall.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/BaseCardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/BaseCardManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/BuildingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/BuildingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/HandManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/HandManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_D:/unitysecond/Crafting_The_Forbidden_City(Git)/Crafting_The_Forbidden_City" value="3B7Rse7AccK3Znn6GosY38AsDwB" />
+    </persistenceIdMap>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -21,7 +32,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Card/AdvancedCard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Card/BaseCard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Card/Card.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cell/Cell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Config/Config.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/AdvancedCardManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/BaseCardManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/BuildingManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/HandManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
@@ -48,6 +65,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -100,7 +118,14 @@
       <workItem from="1773906039076" duration="6050000" />
       <workItem from="1773994772227" duration="1526000" />
       <workItem from="1773997291505" duration="5591000" />
-      <workItem from="1774089548877" duration="1757000" />
+      <workItem from="1774089548877" duration="2354000" />
+      <workItem from="1774092589040" duration="33000" />
+      <workItem from="1774148065170" duration="1744000" />
+      <workItem from="1774150163612" duration="451000" />
+      <workItem from="1774150655749" duration="490000" />
+      <workItem from="1774160086789" duration="648000" />
+      <workItem from="1774357753666" duration="324000" />
+      <workItem from="1774422547138" duration="4305000" />
     </task>
     <servers />
   </component>
@@ -114,4 +139,12 @@
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
 </project>

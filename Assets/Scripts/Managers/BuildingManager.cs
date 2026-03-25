@@ -1,20 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class BuildingManager : SingleTon<BuildingManager>
 {
-    private  int needWoodComponent;
-    private  int needStoneComponent;
-    private  int needTileComponent;
-    private  int needDecorativeComponent;
+    public int needWoodComponent;
+    public int needStoneComponent;
+    public int needTileComponent;
+    public int needDecorativeComponent;
+    
+    public SpriteRenderer roofSprite;
+    public SpriteRenderer mainBodySprite;
+    public SpriteRenderer platformBaseSprite;
     
     public  int currentWoodComponent=0;
     public  int currentStoneComponent=0;
     public  int currentTileComponent=0;
     public  int currentDecorativeComponent=0;
+    public  int mainBodyPoint = 0;
     public  int SceneIndex;
 
     private void Start()
@@ -59,5 +65,19 @@ public class BuildingManager : SingleTon<BuildingManager>
         {
            GameManager.Instance.onGameOver?.Invoke();
         }
+        UpdateSpriteColors();
     }
+
+    private void UpdateSpriteColors()
+    {
+        float roofPercentage = (float)currentTileComponent / needTileComponent;
+        float mainBodyPercentage = (float)mainBodyPoint / (needWoodComponent+needDecorativeComponent);
+        float platformPercentage = (float)currentStoneComponent / needStoneComponent;
+        
+        roofSprite.color = Color.Lerp(Color.black, Color.white, roofPercentage);
+        mainBodySprite.color = Color.Lerp(Color.black, Color.white, mainBodyPercentage);
+        platformBaseSprite.color = Color.Lerp(Color.black, Color.white, platformPercentage);
+    }
+
 }
+
