@@ -23,4 +23,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FourthGameScene.unity
     guid: b4a5d91a1cbdb744493a2926d7f67859
+  - enabled: 1
+    path: Assets/Scenes/TaiheMenPuzzleScene.unity
+    guid: f5373862e5f42c44f88ec1ccc96c6e73
+  - enabled: 1
+    path: Assets/Scenes/TaihePuzzleScene.unity
+    guid: 12cf3b8c0ac955a49b6bf69fe61abbcc
+  - enabled: 1
+    path: Assets/Scenes/ZhonghePuzzleScene.unity
+    guid: 6d57aa160ba810a4994329073455ae40
+  - enabled: 1
+    path: Assets/Scenes/BaohePuzzleScene.unity
+    guid: 1a814ba0c357ebf49b9b01b26d7a809d
   m_configObjects: {}
