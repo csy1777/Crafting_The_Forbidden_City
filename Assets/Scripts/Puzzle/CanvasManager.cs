@@ -2,6 +2,15 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+[System.Serializable] // 序列化类，使其可在编辑器显示
+public class PuzzleTargetArea
+{
+    public string pieceName; // 拼图名称（如Puzzle_0）
+    public Vector2 minPos;   // 最小坐标
+    public Vector2 maxPos;   // 最大坐标
+    public Vector2 centerPos;// 吸附中心坐标
+}
+
 public class CanvasManager : MonoBehaviour
 {
     [Header("拼图基础配置")]
@@ -9,6 +18,9 @@ public class CanvasManager : MonoBehaviour
     public Transform rightAreaTransform; // 右侧初始生成区域
     public float scaleOnAttach = 1.5f;   // 吸附后放大倍数
     public Sprite[] puzzleSprites;       // 长度为3的数组，依次对应Puzzle_0、Puzzle_1、Puzzle_2
+
+    [Header("拼图目标区域配置【可在外部编辑】")]
+    public List<PuzzleTargetArea> puzzleTargetAreas; // 可在编辑器配置的目标区域列表
 
     [Header("完成弹窗配置")]
     public GameObject completePanel;     // 拖拽绑定你创建的弹窗Panel
@@ -20,13 +32,8 @@ public class CanvasManager : MonoBehaviour
     public AudioClip attachPieceSound;   // 单块拼图吸附音效（新增）
     private AudioSource audioSource;     // 音频播放组件
 
-    // 三个拼图的目标坐标区间（按你提供的数值）
-    private Dictionary<string, (Vector2 min, Vector2 max, Vector2 center)> targetAreas = new Dictionary<string, (Vector2, Vector2, Vector2)>()
-    {
-        { "Puzzle_0", (new Vector2(-573, 308), new Vector2(-473, 408), new Vector2(-523, 358)) },
-        { "Puzzle_1", (new Vector2(-573, 58), new Vector2(-473, 158), new Vector2(-523, 108)) },
-        { "Puzzle_2", (new Vector2(-573, -192), new Vector2(-473, -92), new Vector2(-523, -142)) }
-    };
+    // 运行时使用的目标区域字典（从序列化列表转换）
+    private Dictionary<string, (Vector2 min, Vector2 max, Vector2 center)> targetAreas = new Dictionary<string, (Vector2, Vector2, Vector2)>();
 
     private int completedCount = 0;      // 已完成拼图数
     private bool isAllCompleted = false; // 是否全部完成
@@ -52,8 +59,40 @@ public class CanvasManager : MonoBehaviour
             closeBtn.onClick.AddListener(HideCompletePanel);
         }
 
+        // 初始化目标区域字典（从编辑器配置的列表转换）
+        InitTargetAreas();
+
         // 生成三个拼图到右侧（带不同素材）
         SpawnPuzzlePieces();
+    }
+
+    // 初始化目标区域字典（从编辑器配置的列表转换）
+    private void InitTargetAreas()
+    {
+        targetAreas.Clear();
+
+        if (puzzleTargetAreas == null || puzzleTargetAreas.Count == 0)
+        {
+            Debug.LogWarning("未配置拼图目标区域，使用默认值！");
+            // 添加默认值（兼容旧版本）
+            puzzleTargetAreas = new List<PuzzleTargetArea>()
+            {
+                new PuzzleTargetArea(){ pieceName = "Puzzle_0", minPos = new Vector2(-573, 308), maxPos = new Vector2(-473, 408), centerPos = new Vector2(-523, 358) },
+                new PuzzleTargetArea(){ pieceName = "Puzzle_1", minPos = new Vector2(-573, 58), maxPos = new Vector2(-473, 158), centerPos = new Vector2(-523, 108) },
+                new PuzzleTargetArea(){ pieceName = "Puzzle_2", minPos = new Vector2(-573, -192), maxPos = new Vector2(-473, -92), centerPos = new Vector2(-523, -142) }
+            };
+        }
+
+        // 将列表转换为字典，方便快速查找
+        foreach (var area in puzzleTargetAreas)
+        {
+            if (string.IsNullOrEmpty(area.pieceName))
+            {
+                Debug.LogError("存在未设置名称的拼图目标区域！");
+                continue;
+            }
+            targetAreas[area.pieceName] = (area.minPos, area.maxPos, area.centerPos);
+        }
     }
 
     // 生成拼图到右侧初始位置（新增素材赋值逻辑）
