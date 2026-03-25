@@ -46,7 +46,7 @@ public class BaseCard : Card
       {
          if (GetComponent<SpriteRenderer>().sortingOrder != 0)
             return;
-            //AudioManager.Instance.PlayClip(Config.Card_Click,1);
+         AudioManager.Instance.PlayClip(Config.Card_Click, 1);
             HandManager.Instance.SetCurrentCard(this);
             GetComponent<SpriteRenderer>().sortingOrder = 10;
             canMove = false;
