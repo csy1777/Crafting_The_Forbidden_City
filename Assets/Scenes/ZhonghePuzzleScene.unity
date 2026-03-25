@@ -311,11 +311,27 @@ MonoBehaviour:
   rightAreaTransform: {fileID: 784452054}
   scaleOnAttach: 1.5
   puzzleSprites:
-  - {fileID: 21300000, guid: eac5a8b53cf0a3c4f895c543001caf73, type: 3}
-  - {fileID: 21300000, guid: c41bb6a3e3f20084eb11d3701a59f313, type: 3}
-  - {fileID: 21300000, guid: 5f5a984cebba48e4b8bf58494c93e9c1, type: 3}
+  - {fileID: 21300000, guid: 1adcd52292c45b140b3bcd90cd71e22f, type: 3}
+  - {fileID: 21300000, guid: f61e8493ccb915a4ca6cb56834e1b81d, type: 3}
+  - {fileID: 21300000, guid: f75ee51a3a07093468733020919f63ad, type: 3}
+  puzzleTargetAreas:
+  - pieceName: Puzzle_0
+    minPos: {x: -425, y: 75}
+    maxPos: {x: -175, y: 325}
+    centerPos: {x: -300, y: 200}
+  - pieceName: Puzzle_1
+    minPos: {x: -425, y: 33}
+    maxPos: {x: -175, y: 283}
+    centerPos: {x: -300, y: 158}
+  - pieceName: 
+    minPos: {x: 0, y: 0}
+    maxPos: {x: 0, y: 0}
+    centerPos: {x: 0, y: 0}
   completePanel: {fileID: 1094173547}
   completeText: {fileID: 0}
+  successSound: {fileID: 8300000, guid: d7f0f1b7e2b4fb24ea8d002a319c9b6a, type: 3}
+  clickPieceSound: {fileID: 8300000, guid: 015bf0f105695854b816543023c786ac, type: 3}
+  attachPieceSound: {fileID: 8300000, guid: fb1817a26e255cb48b1110ea0aa77d99, type: 3}
 --- !u!1 &461887561
 GameObject:
   m_ObjectHideFlags: 0
