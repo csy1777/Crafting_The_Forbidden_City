@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54992be1-8b88-4c26-b1c0-dd575ac78b95" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Crafting_The_Forbidden_City/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crafting_The_Forbidden_City/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FengtianGate.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FengtianGate.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FengtianHall.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FengtianHall.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/HuagaiHall.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/HuagaiHall.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JinshenHall.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/JinshenHall.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/BuildingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/BuildingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/HandManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/HandManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +120,7 @@
       <workItem from="1774357753666" duration="324000" />
       <workItem from="1774422547138" duration="6113000" />
       <workItem from="1774437892418" duration="2087000" />
+      <workItem from="1774449079278" duration="281000" />
     </task>
     <servers />
   </component>

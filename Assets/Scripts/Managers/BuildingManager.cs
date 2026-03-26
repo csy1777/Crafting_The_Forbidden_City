@@ -34,25 +34,25 @@ public class BuildingManager : SingleTon<BuildingManager>
         SceneIndex=SceneManager.GetActiveScene().buildIndex;
         switch (SceneIndex)
         {
-            case 1:
+            case 2:
                 needWoodComponent=3;
                 needStoneComponent=2;
                 needTileComponent=8;
                 needDecorativeComponent=1;
                 break;
-            case 2:
+            case 3:
                 needWoodComponent=13;
                 needStoneComponent=8;
                 needTileComponent=5;
                 needDecorativeComponent=6;
                 break;
-            case 3:
+            case 4:
                 needWoodComponent=2;
                 needStoneComponent=4;
                 needTileComponent=8;
                 needDecorativeComponent=5;
                 break;
-            case 4:
+            case 5:
                 needWoodComponent=2;
                 needStoneComponent=6;
                 needTileComponent=6;
