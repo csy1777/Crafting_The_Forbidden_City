@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54992be1-8b88-4c26-b1c0-dd575ac78b95" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/HandManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/HandManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-    </list>
+    <list default="true" id="54992be1-8b88-4c26-b1c0-dd575ac78b95" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,6 +118,7 @@
       <workItem from="1774422547138" duration="6113000" />
       <workItem from="1774437892418" duration="2087000" />
       <workItem from="1774449079278" duration="281000" />
+      <workItem from="1774514309248" duration="496000" />
     </task>
     <servers />
   </component>
