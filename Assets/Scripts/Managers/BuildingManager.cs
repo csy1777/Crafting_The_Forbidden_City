@@ -1,32 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class BuildingManager : SingleTon<BuildingManager>
 {
-    public SpriteRenderer roofSprite;
-    public SpriteRenderer mainBodySprite;
-    public SpriteRenderer platformBaseSprite;
-
-    public Text roofText;
-    public Text mainBodyText;
-    public Text platformBaseText;
-    
-    public int needWoodComponent;
-    public int needStoneComponent;
-    public int needTileComponent;
-    public int needDecorativeComponent;
-    
+    private  int needWoodComponent;
+    private  int needStoneComponent;
+    private  int needTileComponent;
+    private  int needDecorativeComponent;
     
     public  int currentWoodComponent=0;
     public  int currentStoneComponent=0;
     public  int currentTileComponent=0;
     public  int currentDecorativeComponent=0;
-    public  int mainBodyPoint = 0;
     public  int SceneIndex;
 
     private void Start()
@@ -71,30 +59,5 @@ public class BuildingManager : SingleTon<BuildingManager>
         {
            GameManager.Instance.onGameOver?.Invoke();
         }
-        UpdateSpriteColors();
-        UpdateText();
-    }
-
-    private void UpdateSpriteColors()
-    {
-        float roofPercentage = (float)currentTileComponent / needTileComponent;
-        float mainBodyPercentage = (float)mainBodyPoint / (needWoodComponent+needDecorativeComponent);
-        float platformPercentage = (float)currentStoneComponent / needStoneComponent;
-        
-        roofSprite.color = Color.Lerp(Color.black, Color.white, roofPercentage);
-        mainBodySprite.color = Color.Lerp(Color.black, Color.white, mainBodyPercentage);
-        platformBaseSprite.color = Color.Lerp(Color.black, Color.white, platformPercentage);
-    }
-
-    private void UpdateText()
-    {
-        int showRoofText=(needTileComponent-currentTileComponent)>=0?(needTileComponent-currentTileComponent):0;
-        int showMainBodyWoodText=(needWoodComponent-currentWoodComponent)>=0?(needWoodComponent-currentWoodComponent):0;
-        int showMainBodyDecorateText=(needDecorativeComponent-currentDecorativeComponent)>=0?(needDecorativeComponent-currentDecorativeComponent):0;
-        int showPlatformBaseText=(needStoneComponent-currentStoneComponent)>=0?(needStoneComponent-currentStoneComponent):0;
-        roofText.text = "瓦构件:"+showRoofText;
-        mainBodyText.text="木构件:"+showMainBodyWoodText+" "+"装饰构件:"+showMainBodyDecorateText;
-        platformBaseText.text="石构件:"+showPlatformBaseText;
     }
 }
-
