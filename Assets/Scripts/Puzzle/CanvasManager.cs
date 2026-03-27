@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement; // 场景切换命名空间
+using UnityEngine.UI;
 
 [System.Serializable] // 序列化类，使其可在编辑器显示
 public class PuzzleTargetArea
@@ -213,6 +213,27 @@ public class CanvasManager : MonoBehaviour
             // 播放成功音效
             PlaySuccessSound();
         }
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        switch (currentSceneName)
+        {
+            case "TaiheMenPuzzleScene":  // 替换为你的场景名
+                CraftingSystem.Instance.CraftItem("taihe_gate");
+                break;
+            case "TaihePuzzleScene":  // 替换为你的场景名
+                CraftingSystem.Instance.CraftItem("taihe_hall");
+                break;
+            case "ZhonghePuzzleScene":  // 替换为你的场景名
+                CraftingSystem.Instance.CraftItem("zhonghe_hall");
+                break;
+            case "BaohePuzzleScene":  // 替换为你的场景名
+                CraftingSystem.Instance.CraftItem("baohe_hall");
+                break;
+            default:
+                Debug.LogWarning($"未知场景: {currentSceneName}，不触发任何对话");
+                break;
+        }
+       
     }
 
     // 播放成功音效
@@ -264,7 +285,9 @@ public class CanvasManager : MonoBehaviour
 
         if (completePanel != null) completePanel.SetActive(false);
 
-        // 跳转至SelectLevel场景（根据Build Settings中的场景名调整）
-        SceneManager.LoadScene("Scenes/SelectLevel");
+      
+            SceneManager.LoadScene("Scenes/SelectLevel");
+        
     }
+   
 }
