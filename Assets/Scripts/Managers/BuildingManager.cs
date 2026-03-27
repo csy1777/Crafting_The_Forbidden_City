@@ -72,6 +72,7 @@ public class BuildingManager : SingleTon<BuildingManager>
            GameManager.Instance.onGameOver?.Invoke();
         }
         UpdateSpriteColors();
+        UpdateText();
     }
 
     private void UpdateSpriteColors()
@@ -83,6 +84,16 @@ public class BuildingManager : SingleTon<BuildingManager>
         roofSprite.color = Color.Lerp(Color.black, Color.white, roofPercentage);
         mainBodySprite.color = Color.Lerp(Color.black, Color.white, mainBodyPercentage);
         platformBaseSprite.color = Color.Lerp(Color.black, Color.white, platformPercentage);
+    }
+    private void UpdateText()
+    {
+        int showRoofText=(needTileComponent-currentTileComponent)>=0?(needTileComponent-currentTileComponent):0;
+        int showMainBodyWoodText=(needWoodComponent-currentWoodComponent)>=0?(needWoodComponent-currentWoodComponent):0;
+        int showMainBodyDecorateText=(needDecorativeComponent-currentDecorativeComponent)>=0?(needDecorativeComponent-currentDecorativeComponent):0;
+        int showPlatformBaseText=(needStoneComponent-currentStoneComponent)>=0?(needStoneComponent-currentStoneComponent):0;
+        roofText.text = "瓦构件:"+showRoofText;
+        mainBodyText.text="木构件:"+showMainBodyWoodText+" "+"装饰构件:"+showMainBodyDecorateText;
+        platformBaseText.text="石构件:"+showPlatformBaseText;
     }
 
 }
