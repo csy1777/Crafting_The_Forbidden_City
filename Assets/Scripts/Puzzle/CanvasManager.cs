@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement; // 场景切换命名空间
 using UnityEngine.UI;
@@ -289,5 +290,4 @@ public class CanvasManager : MonoBehaviour
             SceneManager.LoadScene("Scenes/SelectLevel");
         
     }
-   
 }
