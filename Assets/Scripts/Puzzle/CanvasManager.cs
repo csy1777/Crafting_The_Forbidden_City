@@ -131,7 +131,7 @@ public class CanvasManager : MonoBehaviour
 
             RectTransform rect = piece.GetComponent<RectTransform>();
             rect.anchoredPosition = new Vector2(0, 300 - 300 * i);
-            rect.sizeDelta = new Vector2(250, 250);
+            rect.sizeDelta = new Vector2(400, 400);
 
             Image pieceImage = piece.GetComponent<Image>();
             if (pieceImage != null)
