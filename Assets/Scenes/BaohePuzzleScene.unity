@@ -311,27 +311,105 @@ MonoBehaviour:
   rightAreaTransform: {fileID: 784452054}
   scaleOnAttach: 1.5
   puzzleSprites:
-  - {fileID: 21300000, guid: 6afc8eab5c00990419c0ffd6ba3e32f2, type: 3}
+  - {fileID: 21300000, guid: 34638ebeeb9aa214587c9f15161500b6, type: 3}
   - {fileID: 21300000, guid: 611a46de764e408478d472fd8ad50a73, type: 3}
   - {fileID: 21300000, guid: c2f2c34e308245b4b8f3c627e4bfd6a6, type: 3}
   puzzleTargetAreas:
   - pieceName: Puzzle_0
-    minPos: {x: -475, y: 75}
-    maxPos: {x: -175, y: 325}
-    centerPos: {x: -300, y: 200}
+    minPos: {x: -441, y: -41}
+    maxPos: {x: -191, y: 209}
+    centerPos: {x: -316, y: 84}
+    sizeDelta: {x: 386.8021, y: 398.6387}
   - pieceName: Puzzle_1
-    minPos: {x: 0, y: 0}
-    maxPos: {x: 0, y: 0}
-    centerPos: {x: 0, y: 0}
+    minPos: {x: -443, y: -91}
+    maxPos: {x: -193, y: 159}
+    centerPos: {x: -318, y: 34}
+    sizeDelta: {x: 400.16, y: 378.911}
   - pieceName: Puzzle_2
-    minPos: {x: 0, y: 0}
-    maxPos: {x: 0, y: 0}
-    centerPos: {x: 0, y: 0}
+    minPos: {x: -431, y: -166}
+    maxPos: {x: -181, y: 84}
+    centerPos: {x: -306, y: -41}
+    sizeDelta: {x: 416, y: 309.2063}
   completePanel: {fileID: 1094173547}
   completeText: {fileID: 0}
   successSound: {fileID: 8300000, guid: d7f0f1b7e2b4fb24ea8d002a319c9b6a, type: 3}
   clickPieceSound: {fileID: 8300000, guid: 015bf0f105695854b816543023c786ac, type: 3}
   attachPieceSound: {fileID: 8300000, guid: fb1817a26e255cb48b1110ea0aa77d99, type: 3}
+--- !u!1 &435256930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 435256931}
+  - component: {fileID: 435256933}
+  - component: {fileID: 435256932}
+  m_Layer: 5
+  m_Name: PizzleShadow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &435256931
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435256930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1237154224}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -17.315628, y: 73.10098}
+  m_SizeDelta: {x: -758.08264, y: 225.1676}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &435256932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435256930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 83bf7b2520e07294688c64f98e580abd, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &435256933
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435256930}
+  m_CullTransparentMesh: 1
 --- !u!1 &461887561
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +467,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 27aa4fa8b524bcd4a8e5a3fb34149cc5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83bf7b2520e07294688c64f98e580abd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -457,15 +535,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.94371045, b: 0.31372547, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9c2c23dc31f6cc8499f40951d2e13bba, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -590,6 +668,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1315215331}
+  - {fileID: 435256931}
   m_Father: {fileID: 341435081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -610,15 +689,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.30045533, g: 1, b: 0, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c66675b3ba59669428a17c7b6d1b1060, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -781,7 +860,7 @@ GameObject:
   - component: {fileID: 1315215333}
   - component: {fileID: 1315215332}
   m_Layer: 5
-  m_Name: Pizzle
+  m_Name: backGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

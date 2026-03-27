@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement; // 场景切换命名空间
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 [System.Serializable] // 序列化类，使其可在编辑器显示
 public class PuzzleTargetArea
@@ -9,6 +10,7 @@ public class PuzzleTargetArea
     public Vector2 minPos;   // 最小坐标
     public Vector2 maxPos;   // 最大坐标
     public Vector2 centerPos;// 吸附中心坐标
+    public Vector2 sizeDelta;// 吸附后的尺寸（自定义）
 }
 
 public class CanvasManager : MonoBehaviour
@@ -16,7 +18,7 @@ public class CanvasManager : MonoBehaviour
     [Header("拼图基础配置")]
     public GameObject puzzlePiecePrefab;
     public Transform rightAreaTransform; // 右侧初始生成区域
-    public float scaleOnAttach = 1.5f;   // 吸附后放大倍数
+    public float scaleOnAttach = 1.5f;   // 吸附后放大倍数（可选保留/移除）
     public Sprite[] puzzleSprites;       // 长度为3的数组，依次对应Puzzle_0、Puzzle_1、Puzzle_2
 
     [Header("拼图目标区域配置【可在外部编辑】")]
@@ -32,8 +34,8 @@ public class CanvasManager : MonoBehaviour
     public AudioClip attachPieceSound;   // 单块拼图吸附音效（新增）
     private AudioSource audioSource;     // 音频播放组件
 
-    // 运行时使用的目标区域字典（从序列化列表转换）
-    private Dictionary<string, (Vector2 min, Vector2 max, Vector2 center)> targetAreas = new Dictionary<string, (Vector2, Vector2, Vector2)>();
+    // 运行时使用的目标区域字典（新增size字段）
+    private Dictionary<string, (Vector2 min, Vector2 max, Vector2 center, Vector2 size)> targetAreas = new Dictionary<string, (Vector2, Vector2, Vector2, Vector2)>();
 
     private int completedCount = 0;      // 已完成拼图数
     private bool isAllCompleted = false; // 是否全部完成
@@ -74,16 +76,34 @@ public class CanvasManager : MonoBehaviour
         if (puzzleTargetAreas == null || puzzleTargetAreas.Count == 0)
         {
             Debug.LogWarning("未配置拼图目标区域，使用默认值！");
-            // 添加默认值（兼容旧版本）
+            // 添加默认值（兼容旧版本，新增尺寸）
             puzzleTargetAreas = new List<PuzzleTargetArea>()
             {
-                new PuzzleTargetArea(){ pieceName = "Puzzle_0", minPos = new Vector2(-573, 308), maxPos = new Vector2(-473, 408), centerPos = new Vector2(-523, 358) },
-                new PuzzleTargetArea(){ pieceName = "Puzzle_1", minPos = new Vector2(-573, 58), maxPos = new Vector2(-473, 158), centerPos = new Vector2(-523, 108) },
-                new PuzzleTargetArea(){ pieceName = "Puzzle_2", minPos = new Vector2(-573, -192), maxPos = new Vector2(-473, -92), centerPos = new Vector2(-523, -142) }
+                new PuzzleTargetArea(){
+                    pieceName = "Puzzle_0",
+                    minPos = new Vector2(-573, 308),
+                    maxPos = new Vector2(-473, 408),
+                    centerPos = new Vector2(-523, 358),
+                    sizeDelta = new Vector2(300, 300)
+                },
+                new PuzzleTargetArea(){
+                    pieceName = "Puzzle_1",
+                    minPos = new Vector2(-573, 58),
+                    maxPos = new Vector2(-473, 158),
+                    centerPos = new Vector2(-523, 108),
+                    sizeDelta = new Vector2(300, 300)
+                },
+                new PuzzleTargetArea(){
+                    pieceName = "Puzzle_2",
+                    minPos = new Vector2(-573, -192),
+                    maxPos = new Vector2(-473, -92),
+                    centerPos = new Vector2(-523, -142),
+                    sizeDelta = new Vector2(300, 300)
+                }
             };
         }
 
-        // 将列表转换为字典，方便快速查找
+        // 将列表转换为字典，方便快速查找（新增size）
         foreach (var area in puzzleTargetAreas)
         {
             if (string.IsNullOrEmpty(area.pieceName))
@@ -91,7 +111,7 @@ public class CanvasManager : MonoBehaviour
                 Debug.LogError("存在未设置名称的拼图目标区域！");
                 continue;
             }
-            targetAreas[area.pieceName] = (area.minPos, area.maxPos, area.centerPos);
+            targetAreas[area.pieceName] = (area.minPos, area.maxPos, area.centerPos, area.sizeDelta);
         }
     }
 
@@ -111,7 +131,7 @@ public class CanvasManager : MonoBehaviour
 
             RectTransform rect = piece.GetComponent<RectTransform>();
             rect.anchoredPosition = new Vector2(0, 300 - 300 * i);
-            rect.sizeDelta = new Vector2(250, 250);
+            rect.sizeDelta = new Vector2(400, 400);
 
             Image pieceImage = piece.GetComponent<Image>();
             if (pieceImage != null)
@@ -126,7 +146,7 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
-    // 核心：坐标区间判定 + 吸附/弹回
+    // 核心：坐标区间判定 + 吸附/弹回（应用自定义位置+尺寸）
     public void CheckAndAttach(GameObject piece)
     {
         if (isAllCompleted) return;
@@ -149,11 +169,12 @@ public class CanvasManager : MonoBehaviour
         if (isInArea)
         {
             piece.transform.SetParent(rightAreaTransform.parent);
-            pieceRect.anchoredPosition = target.center;
-            pieceRect.localScale = new Vector3(scaleOnAttach, scaleOnAttach, 1);
+            pieceRect.anchoredPosition = target.center; // 自定义位置
+            pieceRect.sizeDelta = target.size;          // 自定义尺寸
+            pieceRect.localScale = new Vector3(scaleOnAttach, scaleOnAttach, 1); // 可选：改为Vector3.one移除缩放
             Destroy(piece.GetComponent<DragDrop>());
 
-            // 新增：播放单块吸附音效
+            // 播放单块吸附音效
             PlayAttachPieceSound();
 
             completedCount++;
@@ -192,6 +213,27 @@ public class CanvasManager : MonoBehaviour
             // 播放成功音效
             PlaySuccessSound();
         }
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        switch (currentSceneName)
+        {
+            case "TaiheMenPuzzleScene":  // 替换为你的场景名
+                CraftingSystem.Instance.CraftItem("taihe_gate");
+                break;
+            case "TaihePuzzleScene":  // 替换为你的场景名
+                CraftingSystem.Instance.CraftItem("taihe_hall");
+                break;
+            case "ZhonghePuzzleScene":  // 替换为你的场景名
+                CraftingSystem.Instance.CraftItem("zhonghe_hall");
+                break;
+            case "BaohePuzzleScene":  // 替换为你的场景名
+                CraftingSystem.Instance.CraftItem("baohe_hall");
+                break;
+            default:
+                Debug.LogWarning($"未知场景: {currentSceneName}，不触发任何对话");
+                break;
+        }
+       
     }
 
     // 播放成功音效
@@ -207,7 +249,7 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
-    // 新增：播放单块拼图吸附音效
+    // 播放单块拼图吸附音效
     private void PlayAttachPieceSound()
     {
         if (attachPieceSound != null && audioSource != null)
@@ -220,7 +262,7 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
-    // 新增：播放点击拼图音效（提供给DragDrop调用）
+    // 播放点击拼图音效（提供给DragDrop调用）
     public void PlayClickPieceSound()
     {
         if (clickPieceSound != null && audioSource != null)
@@ -233,9 +275,19 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
-    // 关闭完成弹窗
+    private bool isSceneLoading = false; // 防止重复加载
+
+    // 关闭完成弹窗并跳转场景
     public void HideCompletePanel()
     {
+        if (isSceneLoading) return;
+        isSceneLoading = true;
+
         if (completePanel != null) completePanel.SetActive(false);
+
+      
+            SceneManager.LoadScene("Scenes/SelectLevel");
+        
     }
+   
 }

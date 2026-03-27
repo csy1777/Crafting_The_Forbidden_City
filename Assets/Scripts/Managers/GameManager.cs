@@ -20,11 +20,6 @@ public class GameManager : SingleTon<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (SceneManager.GetActiveScene().buildIndex == 4)
-            {
-                SceneManager.LoadSceneAsync(1);
-                return;
-            }
             onGameOver?.Invoke();
         }
     }
@@ -36,6 +31,6 @@ public class GameManager : SingleTon<GameManager>
     }
     public void LoadNextGameScene()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 4);
     }
 }

@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BuildingManager : SingleTon<BuildingManager>
 {
@@ -15,6 +17,10 @@ public class BuildingManager : SingleTon<BuildingManager>
     public SpriteRenderer roofSprite;
     public SpriteRenderer mainBodySprite;
     public SpriteRenderer platformBaseSprite;
+
+    public Text roofText;
+    public Text mainBodyText;
+    public Text platformBaseText;
     
     public  int currentWoodComponent=0;
     public  int currentStoneComponent=0;
@@ -28,25 +34,25 @@ public class BuildingManager : SingleTon<BuildingManager>
         SceneIndex=SceneManager.GetActiveScene().buildIndex;
         switch (SceneIndex)
         {
-            case 1:
+            case 2:
                 needWoodComponent=3;
                 needStoneComponent=2;
                 needTileComponent=8;
                 needDecorativeComponent=1;
                 break;
-            case 2:
+            case 3:
                 needWoodComponent=13;
                 needStoneComponent=8;
                 needTileComponent=5;
                 needDecorativeComponent=6;
                 break;
-            case 3:
+            case 4:
                 needWoodComponent=2;
                 needStoneComponent=4;
                 needTileComponent=8;
                 needDecorativeComponent=5;
                 break;
-            case 4:
+            case 5:
                 needWoodComponent=2;
                 needStoneComponent=6;
                 needTileComponent=6;
@@ -66,6 +72,7 @@ public class BuildingManager : SingleTon<BuildingManager>
            GameManager.Instance.onGameOver?.Invoke();
         }
         UpdateSpriteColors();
+        UpdateText();
     }
 
     private void UpdateSpriteColors()
@@ -77,6 +84,16 @@ public class BuildingManager : SingleTon<BuildingManager>
         roofSprite.color = Color.Lerp(Color.black, Color.white, roofPercentage);
         mainBodySprite.color = Color.Lerp(Color.black, Color.white, mainBodyPercentage);
         platformBaseSprite.color = Color.Lerp(Color.black, Color.white, platformPercentage);
+    }
+    private void UpdateText()
+    {
+        int showRoofText=(needTileComponent-currentTileComponent)>=0?(needTileComponent-currentTileComponent):0;
+        int showMainBodyWoodText=(needWoodComponent-currentWoodComponent)>=0?(needWoodComponent-currentWoodComponent):0;
+        int showMainBodyDecorateText=(needDecorativeComponent-currentDecorativeComponent)>=0?(needDecorativeComponent-currentDecorativeComponent):0;
+        int showPlatformBaseText=(needStoneComponent-currentStoneComponent)>=0?(needStoneComponent-currentStoneComponent):0;
+        roofText.text = "瓦构件:"+showRoofText;
+        mainBodyText.text="木构件:"+showMainBodyWoodText+" "+"装饰构件:"+showMainBodyDecorateText;
+        platformBaseText.text="石构件:"+showPlatformBaseText;
     }
 
 }

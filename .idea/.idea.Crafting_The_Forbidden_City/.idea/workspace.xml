@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54992be1-8b88-4c26-b1c0-dd575ac78b95" name="更改" comment="" />
+    <list default="true" id="54992be1-8b88-4c26-b1c0-dd575ac78b95" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Crafting_The_Forbidden_City/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crafting_The_Forbidden_City/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Card/AdvancedCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Card/AdvancedCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Card/BaseCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Card/BaseCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Config/Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Config/Config.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/HandManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/HandManager.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,7 +121,7 @@
       <workItem from="1774150655749" duration="490000" />
       <workItem from="1774160086789" duration="648000" />
       <workItem from="1774357753666" duration="324000" />
-      <workItem from="1774422547138" duration="6113000" />
+      <workItem from="1774422547138" duration="5866000" />
     </task>
     <servers />
   </component>

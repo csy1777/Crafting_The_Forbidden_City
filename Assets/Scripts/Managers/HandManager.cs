@@ -271,7 +271,7 @@ public class HandManager : SingleTon<HandManager>
             AdvancedCard obj=Instantiate(woodenComponent);
             currentCard = obj;
             AudioManager.Instance.PlayClip(Config.AdvancedCard_Generate,1);
-           CraftingSystem.Instance.CraftItem("wood_component");
+            CraftingSystem.Instance.CraftItem("wood_component");
         }
         else if (cardType == AdvancedCardType.stoneComponent)
         {
@@ -285,7 +285,7 @@ public class HandManager : SingleTon<HandManager>
             AdvancedCard obj=Instantiate(tileComponent);
             currentCard = obj;
             AudioManager.Instance.PlayClip(Config.AdvancedCard_Generate,1);
-           CraftingSystem.Instance.CraftItem("tile_component");
+            CraftingSystem.Instance.CraftItem("tile_component");
         }
         else if (cardType == AdvancedCardType.decorativeComponent)
         {
