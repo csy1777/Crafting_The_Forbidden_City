@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement; // 场景切换命名空间
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 [System.Serializable] // 序列化类，使其可在编辑器显示
 public class PuzzleTargetArea
@@ -209,32 +210,57 @@ public class CanvasManager : MonoBehaviour
         if (completePanel != null)
         {
             completePanel.SetActive(true);
-            completePanel.transform.SetAsLastSibling(); // 弹窗置顶
-
-            // 播放成功音效
+            completePanel.transform.SetAsLastSibling();
             PlaySuccessSound();
         }
-        string currentSceneName = SceneManager.GetActiveScene().name;
 
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        string itemId = "";
+
+        // 先检查 CraftingSystem 是否存在
+        if (CraftingSystem.Instance == null)
+        {
+            Debug.LogError("CraftingSystem.Instance 未初始化！");
+            return;
+        }
+
+        // 根据场景确定要制作的物品
         switch (currentSceneName)
         {
-            case "TaiheMenPuzzleScene":  // 替换为你的场景名
-                CraftingSystem.Instance.CraftItem("taihe_gate");
+            case "TaiheMenPuzzleScene":
+                itemId = "taihe_gate";
+                CraftingSystem.Instance.CraftItem(itemId);
                 break;
-            case "TaihePuzzleScene":  // 替换为你的场景名
-                CraftingSystem.Instance.CraftItem("taihe_hall");
+            case "TaihePuzzleScene":
+                itemId = "taihe_hall";
+                CraftingSystem.Instance.CraftItem(itemId);
                 break;
-            case "ZhonghePuzzleScene":  // 替换为你的场景名
-                CraftingSystem.Instance.CraftItem("zhonghe_hall");
+            case "ZhonghePuzzleScene":
+                itemId = "zhonghe_hall";
+                CraftingSystem.Instance.CraftItem(itemId);
                 break;
-            case "BaohePuzzleScene":  // 替换为你的场景名
-                CraftingSystem.Instance.CraftItem("baohe_hall");
+            case "BaohePuzzleScene":
+                itemId = "baohe_hall";
+                CraftingSystem.Instance.CraftItem(itemId);
                 break;
             default:
-                Debug.LogWarning($"未知场景: {currentSceneName}，不触发任何对话");
-                break;
+                Debug.LogWarning($"未知场景: {currentSceneName}");
+                return;
         }
-       
+
+        // 记录拼图完成状态
+        if (GameProgressManager.Instance != null)
+        {
+            GameProgressManager.Instance.CompletePuzzle(currentSceneName, itemId);
+
+            // 改变场景选择界面对应Image的颜色
+            GameProgressManager.Instance.SetImageColor("SelectLevel", $"Image_{itemId}", Color.green);
+            Debug.Log($"已标记 {itemId} 为完成，Image颜色已设置为绿色");
+        }
+        else
+        {
+            Debug.LogError("GameProgressManager.Instance 未初始化！请在场景中添加GameProgressManager对象");
+        }
     }
 
     // 播放成功音效
