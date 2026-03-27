@@ -311,7 +311,7 @@ MonoBehaviour:
   rightAreaTransform: {fileID: 784452054}
   scaleOnAttach: 1.5
   puzzleSprites:
-  - {fileID: 21300000, guid: 6afc8eab5c00990419c0ffd6ba3e32f2, type: 3}
+  - {fileID: 21300000, guid: 34638ebeeb9aa214587c9f15161500b6, type: 3}
   - {fileID: 21300000, guid: 611a46de764e408478d472fd8ad50a73, type: 3}
   - {fileID: 21300000, guid: c2f2c34e308245b4b8f3c627e4bfd6a6, type: 3}
   puzzleTargetAreas:
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4cc1e26a52f0de647b92a6d69538ca08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83bf7b2520e07294688c64f98e580abd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -467,7 +467,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 27aa4fa8b524bcd4a8e5a3fb34149cc5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83bf7b2520e07294688c64f98e580abd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
