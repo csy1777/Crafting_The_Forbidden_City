@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BuildingManager : SingleTon<BuildingManager>
 {
@@ -15,6 +17,10 @@ public class BuildingManager : SingleTon<BuildingManager>
     public SpriteRenderer roofSprite;
     public SpriteRenderer mainBodySprite;
     public SpriteRenderer platformBaseSprite;
+
+    public Text roofText;
+    public Text mainBodyText;
+    public Text platformBaseText;
     
     public  int currentWoodComponent=0;
     public  int currentStoneComponent=0;
