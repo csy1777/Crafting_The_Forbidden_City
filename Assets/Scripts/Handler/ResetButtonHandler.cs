@@ -5,7 +5,6 @@ public class ResetButtonHandler : MonoBehaviour
 {
     void Start()
     {
-        // 获取按钮组件
         Button btn = GetComponent<Button>();
         if (btn != null)
         {
@@ -16,13 +15,10 @@ public class ResetButtonHandler : MonoBehaviour
 
     void OnResetButtonClick()
     {
-        // 重置进度
         if (GameProgressManager.Instance != null)
         {
             GameProgressManager.Instance.ResetAllProgress();
             Debug.Log("游戏进度已重置");
-
-            // 刷新界面
             SceneSelectManager sceneSelect = FindObjectOfType<SceneSelectManager>();
             if (sceneSelect != null)
             {
