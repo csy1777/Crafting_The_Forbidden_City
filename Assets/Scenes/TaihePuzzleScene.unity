@@ -321,15 +321,15 @@ MonoBehaviour:
     centerPos: {x: -290, y: 229}
     sizeDelta: {x: 561.4244, y: 240.7762}
   - pieceName: Puzzle_1
-    minPos: {x: -409, y: -12}
-    maxPos: {x: -159, y: 238}
-    centerPos: {x: -284, y: 113.1874}
-    sizeDelta: {x: 952.6516, y: 1382.196}
+    minPos: {x: -434, y: -47}
+    maxPos: {x: -184, y: 203}
+    centerPos: {x: -309.6877, y: 78.1585}
+    sizeDelta: {x: 831.2188, y: 1335.491}
   - pieceName: Puzzle_2
-    minPos: {x: -437, y: -285}
-    maxPos: {x: -187, y: -35}
-    centerPos: {x: -312, y: -160}
-    sizeDelta: {x: 1387.987, y: 556.494}
+    minPos: {x: -442, y: -206}
+    maxPos: {x: -192, y: 44}
+    centerPos: {x: -317.9653, y: -81.79745}
+    sizeDelta: {x: 856.0695, y: 377.4958}
   completePanel: {fileID: 1094173547}
   completeText: {fileID: 0}
   successSound: {fileID: 8300000, guid: d7f0f1b7e2b4fb24ea8d002a319c9b6a, type: 3}
@@ -807,8 +807,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 41, y: 0.10852}
-  m_SizeDelta: {x: -432.0536, y: 734.861}
+  m_AnchoredPosition: {x: -14.233276, y: 78.9299}
+  m_SizeDelta: {x: -85.1205, y: 485.2598}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1315215332
 MonoBehaviour:
