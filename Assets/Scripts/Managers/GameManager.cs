@@ -31,6 +31,6 @@ public class GameManager : SingleTon<GameManager>
     }
     public void LoadNextGameScene()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 4);
     }
 }
