@@ -11,10 +11,10 @@ public enum MaterialCardType
 
 public enum ToolCardType
 {
-   saw,//锯子
-   chiselAndhammer,//凿子和锤子
-   kilnFire,//窑火
-   goldPowder,//金粉
+   saw,
+   chiselAndhammer,
+   kilnFire,
+   goldPowder,
    none
 }
 
@@ -46,7 +46,7 @@ public class BaseCard : Card
       {
          if (GetComponent<SpriteRenderer>().sortingOrder != 0)
             return;
-         AudioManager.Instance.PlayClip(Config.Card_Click, 1);
+            AudioManager.Instance.PlayClip(Config.Card_Click, 1);
             HandManager.Instance.SetCurrentCard(this);
             GetComponent<SpriteRenderer>().sortingOrder = 10;
             canMove = false;

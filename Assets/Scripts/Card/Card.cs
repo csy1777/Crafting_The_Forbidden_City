@@ -11,8 +11,4 @@ public class Card : MonoBehaviour
 {
     public CardType cardType;
     public Cell currentCell;
-    private void Start()
-    {
-        
-    }
 }

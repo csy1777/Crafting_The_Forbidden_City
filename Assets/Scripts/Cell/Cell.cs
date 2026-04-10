@@ -7,8 +7,6 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
    public Card currentCard;
-   
-
    public bool AddCard(Card Card)
    {
       if(currentCard!=null)return false;
@@ -16,7 +14,6 @@ public class Cell : MonoBehaviour
       currentCard.transform.position = transform.position;
       return true;
    }
-
    public void ClearCard()
    {
       currentCard = null;
