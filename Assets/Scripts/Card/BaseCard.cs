@@ -30,7 +30,6 @@ public class BaseCard : Card
    void Update()
    {
       if (endPos == null) return;
-
       if (canMove)
       {
          transform.Translate(Vector3.right * (speed * Time.deltaTime));
